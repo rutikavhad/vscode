@@ -9,7 +9,7 @@ void main(){
     {
         perror("file not found");
 
-        /* code */
+        /* code x*/
     }
     //char myString[1000];
      //   fgets(myString,1000,fp);
