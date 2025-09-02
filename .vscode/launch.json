@@ -1,6 +1,13 @@
 {
   "configurations": [
     {
+      "type": "java",
+      "name": "bubble",
+      "request": "launch",
+      "mainClass": "bubble",
+      "projectName": "vscode_ca7da48e"
+    },
+    {
       "name": "(gdb) Pipe Launch",
       "type": "cppdbg",
       "request": "launch",
