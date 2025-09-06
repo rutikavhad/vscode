@@ -18,7 +18,7 @@ def attack():
         s.close
 
         global already_connected
-        already_connected+=1
+        already_connected=already_connected+1
         if already_connected%50==0:
             print(already_connected)
          

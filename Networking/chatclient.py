@@ -10,9 +10,10 @@ if linux : ifconfig - look for  inet         : put in :client.connect(('..*..',5
 import socket
 import threading
 nickname=input("enter yourname")
-client=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 
-client.connect(('10.31.56.76', 55555))
+client=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+client.connect(('10.30.43.13', 55555))
+
 def receive():
     while True:
         try:

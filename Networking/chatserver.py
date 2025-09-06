@@ -27,7 +27,7 @@ def handle(client):
             index = clients.index(client)
             clients.remove(client)
             client.close()
-            nickname=nickname[index]
+            nickname=nicknames[index]
             borcast(f'{nickname} left the room'.encode('ascii'))
             nicknames.remove(nickname)
             break
