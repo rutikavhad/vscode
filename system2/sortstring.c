@@ -87,7 +87,7 @@ int main(){
     }
     printf("by file \n");
    // sortbyfile(fp);  //this sort by from file 
-    printf("by array\n");
+    printf("by array\n"); 
     char arr[][MAXL]={"rutik","prshant","karan"};
     int count=sizeof(arr)/sizeof(arr[0]);
     //printf("%d",count);
