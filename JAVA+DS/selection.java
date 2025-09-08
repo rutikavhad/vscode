@@ -9,7 +9,7 @@ public class selection{
             
         }
        // System.err.println("from function"+max);
-        return max;
+        return max; 
     }
     public static void main(String[] args) {
         int arr[]={};

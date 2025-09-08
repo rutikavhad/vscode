@@ -12,13 +12,11 @@ public class insertionsort {
                 else
                 break;   
             }
-            
         }
         for (int i = 0; i < arr.length; i++) {
             System.out.println(arr[i]);
         }
         return 0;
-
     }
     public static void main(String[] args) {
         
