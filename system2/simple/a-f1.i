@@ -1,9 +1,9 @@
-# 0 "a.c"
+# 0 "f1.c"
 # 0 "<built-in>"
 # 0 "<command-line>"
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 0 "<command-line>" 2
-# 1 "a.c"
+# 1 "f1.c"
 # 1 "/usr/include/stdio.h" 1 3 4
 # 28 "/usr/include/stdio.h" 3 4
 # 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
@@ -42,9 +42,9 @@
 
 
 # 1 "/usr/lib/gcc/x86_64-linux-gnu/14/include/stddef.h" 1 3 4
-# 214 "/usr/lib/gcc/x86_64-linux-gnu/14/include/stddef.h" 3 4
+# 229 "/usr/lib/gcc/x86_64-linux-gnu/14/include/stddef.h" 3 4
 
-# 214 "/usr/lib/gcc/x86_64-linux-gnu/14/include/stddef.h" 3 4
+# 229 "/usr/lib/gcc/x86_64-linux-gnu/14/include/stddef.h" 3 4
 typedef long unsigned int size_t;
 # 35 "/usr/include/stdio.h" 2 3 4
 
@@ -806,14 +806,16 @@ extern int __uflow (FILE *);
 extern int __overflow (FILE *, int);
 # 973 "/usr/include/stdio.h" 3 4
 
-# 2 "a.c" 2
+# 2 "f1.c" 2
 
-# 2 "a.c"
-int aa;
-int vv=3;
+# 2 "f1.c"
+int c;
+int d=12;
 int main(){
 
- int a=aa;
- printf("hello");
+ int a;
+ int b=12;
  return 0;
+ printf("%d",b);
+
 }

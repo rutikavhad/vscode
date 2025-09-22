@@ -1,9 +1,12 @@
 #include<stdio.h>
-int aa;
-int vv=3;
+int a=12;
+int b;
 int main(){
 
-	int a=aa;
+	int a=23;
+
 	printf("hello");
+
 	return 0;
+
 }

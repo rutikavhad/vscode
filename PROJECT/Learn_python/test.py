@@ -207,3 +207,9 @@ print(p.read())
 import pandas as pd
 df=pd.read_csv("tests.csv")
 print(df.head)
+
+
+
+import joblib as jp
+
+import fastapi as fast

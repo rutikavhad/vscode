@@ -1,0 +1,19 @@
+     1                                  section .data
+     2 00000000 0B000000                	r1 dd 11
+     3 00000004 727574696B              	r2 db "rutik"
+     4 00000009 727574696B00            	r3 dw "rutik"
+     5                                  section .bss
+     6 00000000 ????????                	r4 resb 4
+     7                                  
+     8                                  
+     9                                  section .text
+    10                                  	global main
+    11                                  
+    12                                  main:
+    13 00000000 B91E000000              	mov ecx,30
+    14 00000005 83C11E                  	add ecx,30
+    15 00000008 83E81E                  	sub eax,30
+    16 0000000B 033CB9                  	add edi,[ecx+edi*4]
+    17 0000000E 01FF                    	add edi,edi
+    18 00000010 0301                    	add eax,[ecx]
+    19 00000012 037D00                  	add edi,[ebp]

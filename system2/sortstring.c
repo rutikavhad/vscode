@@ -43,10 +43,10 @@ int sortbyfile(FILE* fp){
         if (i<count-1)
         {
             fprintf(fp,",");
-            /* code */
+           
         }
         
-        /* code */
+   
      }
 
 return 0;
@@ -86,7 +86,7 @@ int main(){
         exit(1);
     }
     printf("by file \n");
-   // sortbyfile(fp);  //this sort by from file 
+   // sortbyfile(fp);  //sort by from file 
     printf("by array\n"); 
     char arr[][MAXL]={"rutik","prshant","karan"};
     int count=sizeof(arr)/sizeof(arr[0]);

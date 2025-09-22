@@ -1,0 +1,32 @@
+     1                                  section .data
+     2 00000000 5700000068656C6C6F-     	a dd 87, "hello"
+     2 00000009 000000             
+     3 0000000C 202B68656C6C6F          	b db 32,43,"hello"
+     4 00000013 2B00370068656C6C6F-     	c dw 43,55,"hello",0
+     4 0000001C 000000             
+     5                                  section .bss 
+     6 00000000 <res Ch>                	r1 resd 3
+     7 0000000C ??????                  	r2 resb 3
+     8 0000000F <res Ah>                	r3 resw 5
+     9                                  section .text
+    10                                  	global main
+    11                                  	
+    12                                  main:
+    13 00000000 05[00000000]            	add eax,a
+    14 00000005 2D[0C000000]            	sub eax,b
+    15 0000000A 83C00A                  	add eax,10
+    16 0000000D 81C3FF000000            	add ebx,0xFF
+    17 00000013 BBFF000000              	mov ebx,0xFF
+    18 00000018 01D8                    	add eax,ebx
+    19 0000001A EB1D                    	jmp label
+    20 0000001C 8B4500                  	mov eax,[ebp]
+    21 0000001F 8B85FF000000            	mov eax,[ebp+255]
+    22 00000025 8B4C0D00                	mov ecx,[ebp+ecx]
+    23 00000029 0344AB08                	add eax,[ebx+ebp*4+8]
+    24 0000002D 81C3[00000000]          	add ebx,r1
+    25 00000033 40                      	inc eax
+    26 00000034 49                      	dec ecx
+    27 00000035 F7E0                    	mul eax
+    28 00000037 F7F3                    	div ebx
+    29                                  label:
+    30 00000039 C3                      	ret
