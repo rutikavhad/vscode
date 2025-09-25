@@ -1,0 +1,23 @@
+// Connect to database "testdb"
+use("testdb");
+
+// Insert a document
+db.users.insertOne({ name: "BadHacker", role: "tester", age: 25 });
+
+// Insert multiple
+db.users.insertMany([
+  { name: "Alice", role: "admin" },
+  { name: "Bob", role: "dev" }
+]);
+
+// Find all documents
+db.users.find();
+
+// Find with condition
+db.users.find({ role: "admin" });
+
+// Update a document
+db.users.updateOne({ name: "Bob" }, { $set: { role: "manager" } });
+
+// Delete a document
+db.users.deleteOne({ name: "Alice" });
