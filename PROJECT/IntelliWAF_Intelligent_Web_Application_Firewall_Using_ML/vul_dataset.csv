@@ -1,0 +1,54 @@
+| text_input                            | label |
+| ------------------------------------- | ----- |
+| admin                                 | 0     |
+| user123                               | 0     |
+| password                              | 0     |
+| john                                  | 0     |
+| hello123                              | 0     |
+| search query                          | 0     |
+| login                                 | 0     |
+| home                                  | 0     |
+| about                                 | 0     |
+| contact                               | 0     |
+| ' OR '1'='1 --                        | 1     |
+| ' OR 1=1 --                           | 1     |
+| admin' --                             | 1     |
+| ' UNION SELECT NULL --                | 1     |
+| <script>alert('XSS')</script>         | 1     |
+| <img src=x onerror=alert(1)>          | 1     |
+| ../../etc/passwd                      | 1     |
+| ; rm -rf /                            | 1     |
+| `cat /etc/shadow`                     | 1     |
+| ' OR 'a'='a                           | 1     |
+| admin:admin                           | 1     |
+| root:root                             | 1     |
+| 123456                                | 1     |
+| guest:guest                           | 1     |
+| ' OR ''='                             | 1     |
+| <iframe src="malicious.com"></iframe> | 1     |
+| login attempt 1                       | 0     |
+| password123                           | 0     |
+| testuser                              | 0     |
+| contact form submission               | 0     |
+| dashboard                             | 0     |
+| <script>document.cookie</script>      | 1     |
+| <svg/onload=alert(1)>                 | 1     |
+| ' OR SLEEP(5) --                      | 1     |
+| ../../boot.ini                        | 1     |
+| ping -c 5 127.0.0.1                   | 1     |
+| admin123                              | 0     |
+| test123                               | 0     |
+| logout                                | 0     |
+| submit                                | 0     |
+| search                                | 0     |
+| update                                | 0     |
+| delete                                | 0     |
+| insert                                | 0     |
+| <body onload=alert(1)>                | 1     |
+| ' OR 'x'='x' --                       | 1     |
+| etc/passwd                            | 1     |
+| root                                  | 0     |
+| guest                                 | 0     |
+| test                                  | 0     |
+| admin' OR '1'='1' --                  | 1     |
+| 1' OR '1'='1                          | 1     |
