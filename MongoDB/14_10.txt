@@ -1,0 +1,42 @@
+.Extend structure:
+>length
+>xnext
+>xpre 
+>firstrecord
+>lastrecord
+
+.extend and records
+
+.internl file format
+
+.storege layout
+
+.benefits of mongoDB 3.0:
+
+.mongoDB 3.0 vs other DBs
+
+.mongoDB Architecture
+
+.two storage mode have in mongoDB on  14-10-25
+1:MMAP1 2: WT
+
+.WiredTiger Architecture
+
+.WiredTiger sessions
+
+.WiredTiger Schema & Cursors
+
+.WiredTiger Transaction
+
+.Traditional B+Tree 
+
+.page in Memory
+
+.Deadlock Avoidance
+
+.in-memory performance : tree cache 
+
+.takeaways:  page and tree 
+
+.Document-level Concurrency
+

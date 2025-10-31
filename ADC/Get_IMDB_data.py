@@ -2,30 +2,41 @@ import requests
 import csv
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-OMDB_API_KEY = "YOUR_OMDB_API_KEY"  # Replace with your actual OMDB API key
+OMDB_API_KEY = "a7fd314c"  # Replace with your actual OMDB API key
 OMDB_BASE = "http://www.omdbapi.com/"
 
-marvel_movies = [
-    "Iron Man",
-    "The Incredible Hulk",
-    "Iron Man 2",
-    "Thor",
-    "Captain America: The First Avenger",
-    "The Avengers",
-    "Iron Man 3",
-    "Thor: The Dark World",
-    "Captain America: The Winter Soldier",
-    "Guardians of the Galaxy",
-    "Avengers: Age of Ultron",
-    "Ant-Man",
-    "Captain America: Civil War",
-    "Doctor Strange",
-    "Guardians of the Galaxy Vol. 2",
-    "Spider-Man: Homecoming",
-    "Thor: Ragnarok",
-    "Black Panther",
-    "Avengers: Infinity War",
-    "Avengers: Endgame"
+marval_movies = [
+  "Avengers: Infinity War",
+  "Avengers: Endgame",
+  "Black Panther",
+  "Guardians of the Galaxy",
+  "Thor: Ragnarok",
+  "Captain America: The Winter Soldier",
+  "Spider-Man: No Way Home",
+  "Spider-Man: Homecoming",
+  "Shang-Chi and the Legend of the Ten Rings",
+  "Guardians of the Galaxy Vol. 3",
+  "Captain America: Civil War",
+  "Doctor Strange",
+  "Ant-Man",
+  "Spider-Man: Far From Home",
+  "Avengers: Age of Ultron",
+  "Captain Marvel",
+  "Iron Man",
+  "Black Panther: Wakanda Forever",
+  "Thor: Love and Thunder",
+  "Eternals",
+  "Ant-Man and the Wasp",
+  "Thor: The Dark World",
+  "Iron Man 3",
+  "Iron Man 2",
+  "The Incredible Hulk",
+  "Deadpool & Wolverine",
+  "Fantastic Four: First Steps",
+  "Spider-Man 2",
+  "X-Men: Days of Future Past"
+
+    
 ]
 
 FIELDS = [
@@ -51,8 +62,8 @@ def fetch_all(movie_list):
     return results
 
 if __name__ == "__main__":
-    rows = fetch_all(marvel_movies)
-    out = "marvel_movies.csv"
+    rows = fetch_all(marval_movies)
+    out = "marval_movies.csv"
     keys = FIELDS + (["Error"] if any("Error" in r for r in rows) else [])
     with open(out, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=keys)

@@ -2,6 +2,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "find_missing",
+      "request": "launch",
+      "mainClass": "find_missing",
+      "projectName": "vscode_ca7da48e"
+    },
+    {
+      "type": "java",
       "name": "bubble",
       "request": "launch",
       "mainClass": "bubble",
