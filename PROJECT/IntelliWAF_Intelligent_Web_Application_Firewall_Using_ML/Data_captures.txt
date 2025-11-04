@@ -1,54 +1,22 @@
 ---- CAPTURE START ----
-timestamp: 2025-10-29T05:39:57.013578Z
-client_ip: 127.0.0.1:47602
-method: POST
-url: http://192.168.122.170/dvwa/login.php
-path: /dvwa/login.php
----- HEADERS ----
-Host: 192.168.122.170
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Content-Type: application/x-www-form-urlencoded
-Content-Length: 40
-Origin: http://192.168.122.170
-Connection: keep-alive
-Referer: http://192.168.122.170/dvwa/login.php
-Cookie: security=high; PHPSESSID=5ce2d84e112fed03082cc6574bf8b68b
-Upgrade-Insecure-Requests: 1
-Priority: u=0, i
----- QUERY ----
-
----- BODY ----
-username=admin&password=pass&Login=Login
----- CACHE-RELATED HEADERS ----
-Cache-Control: (none)
-Pragma: (none)
-Expires: (none)
-If-Modified-Since: (none)
-If-None-Match: (none)
----- CAPTURE END ----
-
----- CAPTURE START ----
-timestamp: 2025-10-29T05:39:57.070413Z
-client_ip: 127.0.0.1:47602
+timestamp: 2025-11-01T09:00:05.572838Z
+client_ip: 127.0.0.1:51244
 method: GET
-url: http://192.168.122.170/dvwa/login.php
-path: /dvwa/login.php
+url: http://192.168.122.170/dvwa/vulnerabilities/sqli/?id=hello&Submit=Submit
+path: /dvwa/vulnerabilities/sqli/?id=hello&Submit=Submit
 ---- HEADERS ----
 Host: 192.168.122.170
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
 Accept-Language: en-US,en;q=0.5
 Accept-Encoding: gzip, deflate
-Referer: http://192.168.122.170/dvwa/login.php
 Connection: keep-alive
-Cookie: security=high; PHPSESSID=5ce2d84e112fed03082cc6574bf8b68b
+Referer: http://192.168.122.170/dvwa/vulnerabilities/sqli/?id=admin&Submit=Submit
+Cookie: security=high; PHPSESSID=a4aa47e5151ada3cefcb539d5c812897
 Upgrade-Insecure-Requests: 1
 Priority: u=0, i
 ---- QUERY ----
-
+id=hello, Submit=Submit
 ---- BODY ----
 (empty)
 ---- CACHE-RELATED HEADERS ----
@@ -60,56 +28,25 @@ If-None-Match: (none)
 ---- CAPTURE END ----
 
 ---- CAPTURE START ----
-timestamp: 2025-10-29T05:41:56.838286Z
-client_ip: 127.0.0.1:40798
+timestamp: 2025-11-01T09:00:55.787094Z
+client_ip: 127.0.0.1:45194
 method: GET
-url: http://detectportal.firefox.com/success.txt?ipv4
-path: /success.txt?ipv4
+url: https://contile.services.mozilla.com/v1/tiles
+path: /v1/tiles
 ---- HEADERS ----
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Connection: keep-alive
-Priority: u=4
-Pragma: no-cache
-Cache-Control: no-cache
+user-agent: Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0
+accept: */*
+accept-language: en-US,en;q=0.5
+accept-encoding: gzip, deflate, br, zstd
+priority: u=4
+te: trailers
 ---- QUERY ----
-ipv4=
----- BODY ----
-(empty)
----- CACHE-RELATED HEADERS ----
-Cache-Control: no-cache
-Pragma: no-cache
-Expires: (none)
-If-Modified-Since: (none)
-If-None-Match: (none)
----- CAPTURE END ----
 
----- CAPTURE START ----
-timestamp: 2025-10-29T05:41:56.852394Z
-client_ip: 127.0.0.1:40806
-method: GET
-url: http://detectportal.firefox.com/success.txt?ipv6
-path: /success.txt?ipv6
----- HEADERS ----
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Connection: keep-alive
-Priority: u=4
-Pragma: no-cache
-Cache-Control: no-cache
----- QUERY ----
-ipv6=
 ---- BODY ----
 (empty)
 ---- CACHE-RELATED HEADERS ----
-Cache-Control: no-cache
-Pragma: no-cache
+Cache-Control: (none)
+Pragma: (none)
 Expires: (none)
 If-Modified-Since: (none)
 If-None-Match: (none)
