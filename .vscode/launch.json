@@ -2,6 +2,27 @@
   "configurations": [
     {
       "type": "java",
+      "name": "hashing_linear",
+      "request": "launch",
+      "mainClass": "hashing_linear",
+      "projectName": "vscode_ca7da48e"
+    },
+    {
+      "type": "java",
+      "name": "Linear_probing",
+      "request": "launch",
+      "mainClass": "Linear_probing",
+      "projectName": "vscode_ca7da48e"
+    },
+    {
+      "type": "java",
+      "name": "Hashing",
+      "request": "launch",
+      "mainClass": "Hashing",
+      "projectName": "vscode_ca7da48e"
+    },
+    {
+      "type": "java",
       "name": "linkedlist",
       "request": "launch",
       "mainClass": "linkedlist",
