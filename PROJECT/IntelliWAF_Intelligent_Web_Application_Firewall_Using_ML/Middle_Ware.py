@@ -1,22 +1,22 @@
-from mitmproxy import http
-from datetime import datetime
-import os
+from mitmproxy import http # this  MITMPROXY used to extract data using proxy server
+from datetime import datetime # used to which time data collected
+import os # for save  file 
 
 OUTFILE = "Data_captures.txt"
-MAX_BODY_CHARS = 200000 
+MAX_BODY_CHARS = 200000  # prevents to captures large bodies data 
 
-def OP_File():
-    if not os.path.exists(OUTFILE):
+def OP_File(): #create file to store data in this file if file not exits
+    if not os.path.exists(OUTFILE): 
         open(OUTFILE, "w", encoding="utf-8").close()
 
-def Plain_String(x):
+def Plain_String(x): # convert to human redable form as string
     if x is None:
         return "(none)"
     try:
         
         if hasattr(x, "items"):
             try:
-                return ", ".join(f"{k}={v}" for k, v in x.items())
+                return ", ".join(f"{k}={v}" for k, v in x.items()) # used try & catch to avoid crash whiles writing file
             except Exception:
               
                 try:
@@ -28,7 +28,7 @@ def Plain_String(x):
             try:
                 return x.decode("utf-8", errors="replace")
             except Exception:
-                return f"[binary {len(x)} bytes]"
+                return f"[binary {len(x)} bytes]" #if can't convert into plain text then show binary values not errors
         return str(x)
     except Exception:
         return repr(x)
@@ -40,9 +40,10 @@ def format_headers(h):
     except Exception:
         return Plain_String(h)
 
-def request(flow: http.HTTPFlow) -> None:
+def request(flow: http.HTTPFlow) -> None: # this used to get all info using mitmproxy 
     """
         Writes a plain-text block per request.
+        In this function used mitmproxy prebuild methods to capthure requests
     """
     OP_File()
     req = flow.request

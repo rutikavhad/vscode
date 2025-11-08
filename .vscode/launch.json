@@ -2,6 +2,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "BST",
+      "request": "launch",
+      "mainClass": "BST",
+      "projectName": "vscode_ca7da48e"
+    },
+    {
+      "type": "java",
+      "name": "binarytree",
+      "request": "launch",
+      "mainClass": "binarytree",
+      "projectName": "vscode_ca7da48e"
+    },
+    {
+      "type": "java",
       "name": "hashing_linear",
       "request": "launch",
       "mainClass": "hashing_linear",

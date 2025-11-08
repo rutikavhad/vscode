@@ -30,12 +30,12 @@ int main()
 
   len = sizeof(mouth);
   printf("brain waiting for mouth...\n");
-  n = recvfrom(s1, buf, BUFLEN, 0, (struct sockaddr *)&mouth, &len);
+  n = recvfrom(s1, buf, BUFLEN, 0, (struct sockaddr *)&mouth, &len); // recv from mouth
   buf[n] = '\0';
   printf("brain got: %s\n", buf);
 
   strcat(buf, "this is a brain");
-  sendto(s2, buf, strlen(buf), 0, (struct sockaddr *)&ear, sizeof(ear));
+  sendto(s2, buf, strlen(buf), 0, (struct sockaddr *)&ear, sizeof(ear)); // send to ear
   printf("brain sent to ear\n");
 
   return 0;

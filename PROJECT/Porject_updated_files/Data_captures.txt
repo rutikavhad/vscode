@@ -1,0 +1,65 @@
+---- CAPTURE START ----
+timestamp: 2025-11-07T08:08:49.756185Z
+client_ip: 127.0.0.1:38796
+method: POST
+url: http://192.168.122.170/dvwa/login.php
+path: /dvwa/login.php
+---- HEADERS ----
+Host: 192.168.122.170
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 39
+Origin: http://192.168.122.170
+Connection: keep-alive
+Referer: http://192.168.122.170/dvwa/login.php
+Cookie: security=high; PHPSESSID=646a76e90517aafe872edb4f09a2ecf2
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
+---- QUERY ----
+
+---- BODY ----
+username=king&password=raja&Login=Login
+---- CACHE-RELATED HEADERS ----
+Cache-Control: (none)
+Pragma: (none)
+Expires: (none)
+If-Modified-Since: (none)
+If-None-Match: (none)
+---- CAPTURE END ----
+
+---- RESPONSE ENRICHMENT START ----
+timestamp: 2025-11-07T08:08:49.774749Z
+client_ip: 127.0.0.1:38796
+method: POST
+url: http://192.168.122.170/dvwa/login.php
+response_status: 302
+response_length: 0
+---- RESPONSE HEADERS ----
+Date: Fri, 07 Nov 2025 08:08:49 GMT
+Server: Apache/2.2.8 (Ubuntu) DAV/2
+X-Powered-By: PHP/5.2.4-2ubuntu5.10
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Location: login.php
+Content-Length: 0
+Keep-Alive: timeout=15, max=100
+Connection: Keep-Alive
+Content-Type: text/html
+latency_ms: 18
+---- REQ BODY PREVIEW ----
+username=king&password=%3CREDACTED%3E&Login=Login
+request_body_entropy: 4.502
+response_body_entropy: 0.000
+file_count: 0
+user_agent_family: Mozilla/5.0
+cookie_hash: 2a3772cc681a6e6e660c9e4931451866a138bd8518a4dd4812550ac124d620f9
+session_id_hash: 2a3772cc681a6e6e660c9e4931451866a138bd8518a4dd4812550ac124d620f9
+server_ip: ('192.168.122.170', 80)
+---- RESP BODY PREVIEW ----
+(empty)
+---- RESPONSE ENRICHMENT END ----
+
