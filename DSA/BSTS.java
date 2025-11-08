@@ -53,7 +53,7 @@ class BST {
     }
 }
 
-public class Main {
+public class BSTS {
     public static void main(String[] args) {
         BST tree = new BST();
         Node root = null;
