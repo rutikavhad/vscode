@@ -1,0 +1,11 @@
+%{
+    c includes
+}%
+
+yacc -d <yacc_pgm name>
+
+lex <lex_PGM NAME>
+
+cc y.tab.c lec.yy.c
+
+./a.out
