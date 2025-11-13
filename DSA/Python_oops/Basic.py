@@ -24,6 +24,7 @@
 # a=43787333333444444444444777777777777777333333333333333355555555555599999999999999999999999999444444444
 # print(a) #python have a arbitrary sizes
 
+#------------------------------------------------------------------------------------------------------------------------------------------------#
 
 # a=245.e20
 # print(a) # this floting will be work
@@ -33,8 +34,9 @@
 # print(b)
 
 
+#------------------------------------------------------------------------------------------------------------------------------------------------#
 
-# b=reversed(str(10000))       #reverce number
+# 11       #reverce number
 # print(''.join(b))
 # a=''.join(reversed('hello'))  # reverce string
 # print(a)
@@ -47,13 +49,18 @@
 #     num //= 10
 # print(rev) =>  1 not 000001 ?
  
+#------------------------------------------------------------------------------------------------------------------------------------------------#
 
 
 # a = (1, 2, 3)  # this is *tuppel*
 # aa=("hello","wellcome","DJ")
 # b=[1,2,3]      # this is *list*
 # ab=["hello","wellcome","DJ"]
-# c={1,2,3}      # this is *set*  Items must be hashable.
+# c={1,2,3}      # this is *set*  Items must be hashable. 
+
+## set give uniqe no dublicates
+
+
 # ac={"hello","wellcome","DJ"} # set can't be reverced
 
 # print(type(a))  #tuppel
@@ -78,6 +85,7 @@
 
 
 
+#------------------------------------------------------------------------------------------------------------------------------------------------#
 # a="2323.34"  # convert string to int, float etc
 # b=float(a)
 # c=str(a)
@@ -97,6 +105,7 @@
 
 
 
+#------------------------------------------------------------------------------------------------------------------------------------------------#
 
 # #sorted method
 
@@ -117,7 +126,7 @@
 #                 +---------+---------+---------+
 #     A dynamic array of pointers to Python objects.
 
-a=[1,2,3,4] #list
+#a=[1,2,3,4] #list
 # a.append(5)  # 11 method have in this == a.clear a.copya.count a.extend a.index a.insert a.pop a .remove a.reverse a.sort
 #print(len(a)) # this will give  a lenght of list
 
@@ -140,6 +149,7 @@ a=[1,2,3,4] #list
 # print("clear",a)
 
 
+#------------------------------------------------------------------------------------------------------------------------------------------------#
 
 # | Operation / Method                   | **List** | **Tuple** |          **Set**          | Description / Example                        |              |
 # | ------------------------------------ | :------: | :-------: | :-----------------------: | -------------------------------------------- | ------------ |
@@ -180,6 +190,7 @@ a=[1,2,3,4] #list
 
 
 
+#------------------------------------------------------------------------------------------------------------------------------------------------#
 # #user input
 
 # a=input("enter number")
@@ -187,6 +198,7 @@ a=[1,2,3,4] #list
 # b=input("your name")
 # print(b)
 
+#------------------------------------------------------------------------------------------------------------------------------------------------#
 #build functions
 #e.g.
 #print(pow(2,4)) #give power number ex 2^4=16 output is 16
@@ -212,6 +224,7 @@ a=[1,2,3,4] #list
 ##use helf to get info about this 
 #help(max)
 
+#------------------------------------------------------------------------------------------------------------------------------------------------#
 
 import math
 # print(math.sqrt(16))# give root of number == 16 => 4
@@ -225,4 +238,133 @@ import math
 # import test # this can access other .py file functions
 # print(test.hello()) # using filename.functionname can use a this function 
 
+
+#------------------------------------------------------------------------------------------------------------------------------------------------#
+# def funn():
+#     return
+
+# print(funn.__doc__)
+
+# import datetime
+# print(datetime.date.today()) # date and time
+from enum import Enum
+
+# def color(Enum):
+#     red=1
+#     yellow=2
+#     black=3
+
+# print(color(red))
+
+#------------------------------------------------------------------------------------------------------------------------------------------------#
+# this will swich case like
+# from enum import Enum
+# class Color(Enum):
+#     red = 1
+#     green = 2
+#     blue = 3
+# print(Color.red) # Color.red
+# print(Color(2)) # Color.red
+# print(Color['red']) # Color.red
+
+
+# a=[1,2,2,2,2,3,3,4,4]
+# print(a)
+# b=set(a) # set give uniqe no dublicates
+# print(b)
+
+#------------------------------------------------------------------------------------------------------------------------------------------------#
+import operator # this will give  a all math + - / * oprations
+# a=4
+# b=4
+# c=operator.add(a,b)
+# print(c)
+
+# c=operator.mod(3,40)  # have a mod oprater 
+# print(c) 
+
+#------------------------------------------------------------------------------------------------------------------------------------------------#
+
+import math  
+# print(math.log(4)) # have  a log function
+
+
+#------------------------------------------------------------------------------------------------------------------------------------------------#
+
+
+#bit shipting
+# print(2<<1)
+
+# print(8>>2)
+'''
+<<
+        decimal         binary
+ex:     2               10
+        4               0100
+
+    ex 2<<2 this shipt by two 00 
+
+        10<<n               n
+
+        ex= 2=10 << 
+
+| Expression | Binary   | Decimal | Explanation |
+| ---------- | -------- | ------- | ----------- |
+| `2 << 1`   | `100`    | 4       | 2 × 2¹      |
+| `2 << 2`   | `1000`   | 8       | 2 × 2²      |
+| `2 << 3`   | `10000`  | 16      | 2 × 2³      |
+| `2 << 4`   | `100000` | 32      | 2 × 2⁴      |
+|  k << n     
+k= main binary num ex 2 = 0010 
+n= total time shipted left like n = 2 binary=1000 op= decimal= 8
+
+>>
+if binary 10000 =using >> op is   10 remove last digit
+
+
+
+ex << >>
+8>>2==2
+2<<2=8
+
+'''
+
+# 
+# print(bin(2<<2)) ## this print a binary values of number
+# print(bin(8))
+
+#------------------------------------------------------------------------------------------------------------------------------------------------#
+
+
+# this all used to get squre root of number
+# a=4
+# b=4
+# print(4*4*4*4)
+# print(a**b)
+# print(math.pow(4,4))
+
+#------------------------------------------------------------------------------------------------------------------------------------------------#
+
+
+#global and locals variabl
+
+# x=12
+# def num():
+#     x=13
+#     print(x)
+#     print(globals()['xQQ'])
+
+# del x # rhis will remove element scope delete this also used in list = del[0:2] delete from 0 to 2 index
+# #print(x)
+# num()
+
+
+# foo = 1
+# def func():
+#     global foo #if want to  print globle value use globle variable_name
+#     print(foo)
+#     foo = 2
+#     print(foo) # this will print a local values not a globle so local used as same name this will be overwrite
+
+# func()
 

@@ -1,11 +1,9 @@
-%{
-    c includes
-}%
 
-yacc -d <yacc_pgm name>
 
-lex <lex_PGM NAME>
+yacc -d <yacc_pgm name .y>
 
-cc y.tab.c lec.yy.c
+lex <lex_PGM NAME .l>
 
-./a.out
+gcc y.tab.c lec.yy.c -o parser -ll
+
+./parser
