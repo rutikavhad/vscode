@@ -4,13 +4,17 @@ import os
 import hashlib
 import urllib.parse
 import math
+import csv
 
 OUTFILE = "Data_captures.txt"
+CSVFILE = "captures_combined.csv"
 MAX_BODY_CHARS = 200000
 
 def OP_File():
     if not os.path.exists(OUTFILE):
         open(OUTFILE, "w", encoding="utf-8").close()
+    if not os.path.exists(CSVFILE):
+        open(CSVFILE, "w", encoding="utf-8").close()
 
 def Plain_String(x):
     if x is None:
@@ -39,10 +43,28 @@ def format_headers(h):
     except Exception:
         return Plain_String(h)
 
+# --- CSV writer (ADDED, does not affect existing logic) ---
+def write_csv(timestamp: str, raw_text: str):
+    try:
+        file_exists = os.path.exists(CSVFILE)
+        clean_block = raw_text.replace("\n", "\\n").replace("\r", "")
+        
+        with open(CSVFILE, "a", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            if not file_exists or os.path.getsize(CSVFILE) == 0:
+                writer.writerow(["timestamp", "raw_text"])
+            writer.writerow([timestamp, clean_block])
+    except Exception as e:
+        print("CSV write error:", e)
+
+
+# ---- ORIGINAL REQUEST (unchanged, only appended CSV saving) ----
 def request(flow: http.HTTPFlow) -> None:
     OP_File()
     req = flow.request
-    parts = ["---- CAPTURE START ----", "timestamp: " + datetime.utcnow().isoformat() + "Z"]
+    timestamp = datetime.utcnow().isoformat() + "Z"
+
+    parts = ["---- CAPTURE START ----", "timestamp: " + timestamp]
 
     try:
         client_addr = flow.client_conn.address
@@ -75,13 +97,22 @@ def request(flow: http.HTTPFlow) -> None:
         parts.append(f"{hname}: {Plain_String(val)}")
     parts.append("---- CAPTURE END ----\n\n")
 
+    raw_block = "\n".join(parts)
+
+    # write to original text file
     try:
         with open(OUTFILE, "a", encoding="utf-8") as f:
-            f.write("\n".join(parts))
+            f.write(raw_block)
     except Exception as e:
         print("Failed to write capture:", e)
 
-# ------------- Minimal additions ----------------
+    # ======================================================
+    # >>> CSV WRITE ADDED
+    write_csv(timestamp, raw_block)
+    # ======================================================
+
+
+# ===== ORIGINAL EXTRA FUNCTIONS (unchanged) =====
 def sha256_hex(s: str) -> str:
     return hashlib.sha256(s.encode("utf-8")).hexdigest() if s else ""
 
@@ -120,12 +151,15 @@ def count_files(content_type: str, body_bytes: bytes) -> int:
         return 0
     return body_bytes.count(b'filename=') if "multipart/form-data" in content_type.lower() else 0
 
+# ---- ORIGINAL RESPONSE (unchanged, only appended CSV saving) ----
 def response(flow: http.HTTPFlow) -> None:
     try:
         OP_File()
         req = flow.request
         resp = flow.response
-        parts = ["---- RESPONSE ENRICHMENT START ----", "timestamp: " + datetime.utcnow().isoformat() + "Z"]
+        timestamp = datetime.utcnow().isoformat() + "Z"
+
+        parts = ["---- RESPONSE ENRICHMENT START ----", "timestamp: " + timestamp]
 
         try:
             client_addr = flow.client_conn.address
@@ -136,7 +170,6 @@ def response(flow: http.HTTPFlow) -> None:
         parts.append(f"method: {Plain_String(req.method)}")
         parts.append(f"url: {Plain_String(req.pretty_url)}")
 
-        # Response basics
         if resp:
             parts.append(f"response_status: {Plain_String(resp.status_code)}")
             resp_len = len(resp.raw_content) if getattr(resp, "raw_content", None) else len(resp.content or b"")
@@ -146,35 +179,30 @@ def response(flow: http.HTTPFlow) -> None:
         else:
             parts.append("response_status: (none)")
 
-        # latency
         try:
             if getattr(resp, "timestamp_start", None) and getattr(req, "timestamp_start", None):
                 parts.append(f"latency_ms: {int((resp.timestamp_start - req.timestamp_start) * 1000)}")
         except Exception:
             parts.append("latency_ms: (unknown)")
 
-        # request body preview
         content_type = req.headers.get("Content-Type","")
         body_bytes = req.raw_content or b""
         body_preview = safe_text(body_bytes)
-        if "application/x-www-form-urlencoded" in (content_type or "").lower():
+        if "application/x-www-form-urlencoded" in content_type.lower():
             body_preview = redact_form(body_preview)
         parts.append("---- REQ BODY PREVIEW ----")
         parts.append(body_preview or "(empty)")
 
-        # entropy and file count
         parts.append(f"request_body_entropy: {shannon_entropy(body_preview):.3f}")
         parts.append(f"response_body_entropy: {shannon_entropy(safe_text(resp.raw_content if resp else b'')):.3f}")
         parts.append(f"file_count: {count_files(content_type, body_bytes)}")
 
-        # cookie hash / user-agent
         ua = req.headers.get("User-Agent","")
         parts.append(f"user_agent_family: {Plain_String(ua.split(' ')[0] if ua else '(none)')}")
         cookie = req.headers.get("Cookie","")
         parts.append(f"cookie_hash: {sha256_hex(cookie)}")
         parts.append(f"session_id_hash: {sha256_hex(cookie)}")
 
-        # TLS / server info
         try:
             server_conn = getattr(flow, "server_conn", None)
             if server_conn:
@@ -186,7 +214,6 @@ def response(flow: http.HTTPFlow) -> None:
         except Exception:
             pass
 
-        # response preview
         if resp:
             try:
                 resp_bytes = resp.raw_content or resp.content or b""
@@ -197,8 +224,16 @@ def response(flow: http.HTTPFlow) -> None:
 
         parts.append("---- RESPONSE ENRICHMENT END ----\n\n")
 
+        raw_block = "\n".join(parts)
+
+        # write original log
         with open(OUTFILE, "a", encoding="utf-8") as f:
-            f.write("\n".join(parts))
+            f.write(raw_block)
+
+        # ======================================================
+        # >>> CSV WRITE ADDED
+        write_csv(timestamp, raw_block)
+        # ======================================================
 
     except Exception as e:
         print("response() error:", e)
