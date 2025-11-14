@@ -1,59 +1,88 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <arpa/inet.h>
-#include <netinet/in.h>
 #include <unistd.h>
+#include <arpa/inet.h>
 
-#define BUFLEN 1024
+#define SIZE 1024 // this is  a  1 chunk can send data
+#define END "END" // mark as massage end after type massage and hit enter
 
-void happy_birthday_encrypt(char *msg) {
-    for (int i = 0; msg[i]; i++)
-        msg[i] = msg[i] ^ 0x2A;  // XOR each byte with 42
+void xor_crypt(char *d, int n) { // this will used for simepl Encrypt & decrypt
+    for (int i = 0; i < n; i++)
+        d[i] ^= 0x2A; // send only binary data
 }
 
-void happy_birthday_decrypt(char *msg) {
-    happy_birthday_encrypt(msg); // XOR twice = original
-}
-
-int main(int argc, char *argv[]) {
-    if (argc != 4) {
-        printf("Usage: %s <remote_ip> <remote_port> <local_port>\n", argv[0]);
+int main(int c, char *v[]) {
+    if (c != 3) {
+        printf("use: %s <remote_port> <local_port>\n", v[0]); // used to get sender and recever port address
         return 1;
     }
 
-    char *remote_ip = argv[1];
-    int remote_port = atoi(argv[2]);
-    int local_port = atoi(argv[3]);
+    int rport = atoi(v[1]), lport = atoi(v[2]);
+    int s = socket(AF_INET, SOCK_DGRAM, 0); // this socket connection used  ipv4 and udp 
+    if (s < 0) { perror("socket"); return 1; } 
 
-    int sock;
-    char buf[BUFLEN];
-    struct sockaddr_in local, remote;
-    socklen_t len = sizeof(remote);
+    struct sockaddr_in me = {0}, you = {0};  // used for bind local port
+    me.sin_family = AF_INET;                 // used ipv4 socket connection
+    me.sin_port = htons(lport);
+    me.sin_addr.s_addr = INADDR_ANY; 
+    if (bind(s, (void *)&me, sizeof(me)) < 0) {
+        perror("bind"); return 1;
+    }
+    //this is a remote setup
+    you.sin_family = AF_INET;
+    you.sin_port = htons(rport);
+    inet_pton(AF_INET, "127.0.0.1", &you.sin_addr);  // used  a localhost ip for local system
+    // ask    sender or reciver
+    char mode[10];
+    printf("mode (send/recv): ");
+    fgets(mode, sizeof(mode), stdin);
+    mode[strcspn(mode, "\n")] = 0;
 
-    sock = socket(AF_INET, SOCK_DGRAM, 0);
+    char buf[SIZE], all[65536] = {0}; // set max massage size 65 kb only as udp can send at one time not more then this
+    socklen_t len = sizeof(you);
 
-    local.sin_family = AF_INET;
-    local.sin_port = htons(local_port);
-    local.sin_addr.s_addr = INADDR_ANY;
-    bind(sock, (struct sockaddr *)&local, sizeof(local));
+    // === SEND ===
+    if (!strcmp(mode, "send")) {
+        printf("enter message:\n");
+        fgets(all, sizeof(all), stdin);
+        int total = strlen(all), sent = 0; //this will read massage upto 65kb 
+        // this used to make chunk of massage size 1024
+        //if use max or large then 9 kb a packet may be lost, udp can't handle it .
+        while (sent < total) {
+            int chunk = (total - sent > SIZE) ? SIZE : (total - sent);
+            memcpy(buf, all + sent, chunk);
+            xor_crypt(buf, chunk); //  this will  used to Encrypt massage 
+            sendto(s, buf, chunk, 0, (void *)&you, len);
+            sent += chunk;
+            printf("sent %d/%d\n", sent, total);
+            usleep(3000); // this used for avoid packet lost
+        }
+        strcpy(buf, END);
+        xor_crypt(buf, strlen(END));
+        sendto(s, buf, strlen(END), 0, (void *)&you, len);
+        printf("done.\n");
+    }
 
-    remote.sin_family = AF_INET;
-    remote.sin_port = htons(remote_port);
-    inet_pton(AF_INET, remote_ip, &remote.sin_addr);
+    // === RECEIVE === 
+    else if (!strcmp(mode, "recv")) {
+        printf("listening on %d...\n", lport);
+        int pos = 0, n;
+        while (1) {
+            n = recvfrom(s, buf, SIZE, 0, (void *)&you, &len);
+            xor_crypt(buf, n); // this will used to decrypt massage 
+            buf[n] = 0;
+            if (!strcmp(buf, END)) break;
+            memcpy(all + pos, buf, n);
+            pos += n;
+            printf("got %d bytes\n", n);
+        }
+        all[pos] = 0;
+        printf("\nfull msg (%d bytes):\n%s\n", pos, all); // this will print all massage
+    }
 
-    printf("Enter binary message: ");
-    fgets(buf, BUFLEN, stdin);
-    happy_birthday_encrypt(buf);
+    else printf("bad mode\n"); // if got error data
 
-    sendto(sock, buf, strlen(buf), 0, (struct sockaddr *)&remote, sizeof(remote));
-    printf("Encrypted message sent!\n");
-
-    int n = recvfrom(sock, buf, BUFLEN, 0, (struct sockaddr *)&remote, &len);
-    buf[n] = '\0';
-    happy_birthday_decrypt(buf);
-    printf("Received decrypted reply: %s\n", buf);
-
-    close(sock);
+    close(s); // close connections
     return 0;
 }

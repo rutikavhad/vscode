@@ -26,6 +26,9 @@ int main()
   receiverAddr.sin_family = AF_INET;
   receiverAddr.sin_port = htons(REMOTEPORT);
   receiverAddr.sin_addr.s_addr = INADDR_ANY;
+  receiverAddr.sin_addr.s_addr = inet_addr("127.0.0.1"); // target IP of receiver this local ip so don't want to change
+  receiverAddr.sin_port = htons(6000); // target receiver port this change as per file 
+
   sendto(sockfd, (const char *)messageStr, strlen(messageStr), 0, (const struct sockaddr *) &receiverAddr, sizeof(receiverAddr));
   printf("the very important good morning message sent.....\n");
   close(sockfd);

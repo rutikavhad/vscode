@@ -10,7 +10,7 @@
 #include <netinet/in.h>
 
 #define BUFLEN 1024
-#define LISTENPORT 1234
+#define LISTENPORT 5000 //this also change as per file which port want to data send
 
 int main()
 {
