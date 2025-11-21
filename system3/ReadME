@@ -1,0 +1,106 @@
+# **How to run this program**
+
+# program 1
+
+## this program take as input config file 
+##inside file have a ear mouth size and port number
+## current system size=1 
+## if want to run as tow system want to change port as file in urecv.c and usend.c file
+
+
+**baby0:**
+
+#modify brain program only:
+
+# first compile all:
+'''bash
+gcc urecv.c -o urecv
+gcc baby0.c -o baby0
+gcc usend.c -o usend
+'''
+
+# then run:
+'''bash
+
+./urecv
+./baby0 config.txt
+./usend
+
+'''
+
+# inside  of config file"
+'''bash
+EAR_PORT=6000
+MOUTH_PORT=5000
+REMOTE_IP=127.0.0.1
+SELF_SIZE=1
+BUFLEN=1022
+'''
+
+#change as per ear and mouth port 
+
+
+
+
+#program 2:
+
+**baby1.c
+
+## this program send massage as chunk as 1024 as limit one time
+
+
+#compile first:
+'''bash
+gcc baby1.c -o baby1
+'''
+#run on 1st terminal:
+'''bash
+./baby [send_port] [recv_port]
+'''
+
+#run 2nd terminal:
+'''bash
+./baby1 [recv_port] [send_port]
+'''
+#**USE  SAME PORT NUMBER FOR [recv_port]&[send_port]**
+
+
+
+#program 3rd:
+
+##this progarm can run in multiple terminal they show in first terminal other system are online
+
+
+#baby2.c
+
+#compile first:
+'''bash
+gcc baby2.c -o baby2
+'''
+
+#run this file more then 1  terminal
+'''bash
+./baby2
+'''
+
+
+## Brain program
+
+#compile
+'''bash
+gcc urecv.c -o urecv
+gcc usend.c -o usend
+gcc brain.c -o brain
+'''
+#run one by one
+'''bash
+./urecv
+./brain
+./usend
+'''
+
+
+
+## Author
+NAME:**Rutik Avhad**  
+ROLL_NO:24111004

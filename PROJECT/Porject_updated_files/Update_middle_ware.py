@@ -43,7 +43,6 @@ def format_headers(h):
     except Exception:
         return Plain_String(h)
 
-# --- CSV writer (ADDED, does not affect existing logic) ---
 def write_csv(timestamp: str, raw_text: str):
     try:
         file_exists = os.path.exists(CSVFILE)
@@ -58,7 +57,7 @@ def write_csv(timestamp: str, raw_text: str):
         print("CSV write error:", e)
 
 
-# ---- ORIGINAL REQUEST (unchanged, only appended CSV saving) ----
+
 def request(flow: http.HTTPFlow) -> None:
     OP_File()
     req = flow.request
@@ -99,20 +98,16 @@ def request(flow: http.HTTPFlow) -> None:
 
     raw_block = "\n".join(parts)
 
-    # write to original text file
+    
     try:
         with open(OUTFILE, "a", encoding="utf-8") as f:
             f.write(raw_block)
     except Exception as e:
         print("Failed to write capture:", e)
 
-    # ======================================================
-    # >>> CSV WRITE ADDED
+
     write_csv(timestamp, raw_block)
-    # ======================================================
-
-
-# ===== ORIGINAL EXTRA FUNCTIONS (unchanged) =====
+   
 def sha256_hex(s: str) -> str:
     return hashlib.sha256(s.encode("utf-8")).hexdigest() if s else ""
 
@@ -151,7 +146,7 @@ def count_files(content_type: str, body_bytes: bytes) -> int:
         return 0
     return body_bytes.count(b'filename=') if "multipart/form-data" in content_type.lower() else 0
 
-# ---- ORIGINAL RESPONSE (unchanged, only appended CSV saving) ----
+
 def response(flow: http.HTTPFlow) -> None:
     try:
         OP_File()
@@ -226,14 +221,13 @@ def response(flow: http.HTTPFlow) -> None:
 
         raw_block = "\n".join(parts)
 
-        # write original log
+        
         with open(OUTFILE, "a", encoding="utf-8") as f:
             f.write(raw_block)
 
-        # ======================================================
-        # >>> CSV WRITE ADDED
+       
         write_csv(timestamp, raw_block)
-        # ======================================================
+       
 
     except Exception as e:
         print("response() error:", e)
