@@ -332,4 +332,143 @@
 -- select array_to_string($1,''); 
 -- $$ language 'sql'
 
-select my_comb('dbms','test','on','11/11/13','at','11.00am') as result
+-- select my_comb('dbms','test','on','11/11/13','at','11.00am') as result
+
+
+--date 26-11-25
+
+-- create or replace function sum_of_squre(state integer, value integer) returns integer language plpgsql as $$
+
+-- begin
+--     if value is null then
+--         return state;
+--     end if;
+--     return state+value;
+-- end;
+-- $$;
+
+
+-- create aggregate sum_of_squres(integer)(
+--     sfunc=sum_of_squre,
+--     stype=integer,
+--     initcond=0
+
+-- );
+
+
+-- create or replace aggregate my_agg1(integer)(
+--     sfunc=sum_of_squre,
+--     stype=integer,
+--     initcond=1
+
+-- );
+
+-- create or replace aggregate my_agg2(integer)(
+--     sfunc=sum_of_squre,
+--     stype=integer,
+--     initcond=1
+
+-- );
+
+
+-- select my_agg2(customer_id) from customer where customer_id<4;
+
+
+
+-- create or replace function myavg_ignore_small_state(state numeric[],value numeric) returns numeric[] language plpgsql
+-- as $$
+
+-- begin 
+--     if value is null then
+--         return state;
+--     end if;
+--     if value>10 then
+--         state[1]:=state[1]+value;
+--         state[2]:=state[2]+1;
+--     end if;
+--     return state;
+-- end;
+-- $$;
+
+
+
+
+-- create or replace function my_agg3(state numeric[]) returns numeric language plpgsql as $$
+-- begin
+--     if state[2] = 0 or state is null then
+--         return null;
+--     else
+--         return state[1]/state[2];
+--     end if;
+-- end;
+-- $$;
+
+
+-- create or replace aggregate my_avg_small(numeric)(
+--     sfunc=myavg_ignore_small_state,
+--     stype=numeric[],
+--     finalfunc=my_agg3,
+--     initcond="{0,0}"
+
+-- );
+
+
+
+-- -- select my_agg2(customer_id) from customer where customer_id<4;
+
+-- -- select my_avg_small(customer_id) form customer;
+-- -- select my_agg3(3);
+
+
+
+create or replace function myavg_state(state integer[],value integer) returns integer[] as $$
+declare
+    total integer:=0;
+    cnt integer:=0;
+begin
+    if state is not null then
+        total:=state[1];
+        cnt:=state[2];
+        end if;
+
+        if value >=10 then
+            total:=total+value;
+            cnt:=cnt+1;
+        end if;
+
+    return array[total,cnt];
+    end;
+    $$ language plpgsql;
+
+
+
+create or replace function avg_final(state integer[]) returns numeric as $$
+declare
+    total integer:=0;
+    cnt integer:=0;
+begin
+    if state is null then
+        return null;
+    end if;
+
+    total:=state[1];
+    cnt:=state[2];
+
+    if cnt = 0 then
+        return null;
+    end if;
+
+    return total::numeric/cnt;
+
+end;
+$$language plpgsql;
+
+
+create or replace aggregate abgten(integer)(
+    sfunc=myavg_state,
+    stype=integer[],
+    initcond='{0,0}',
+    finalfunc=avg_final
+
+);
+
