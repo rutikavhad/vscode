@@ -9,7 +9,7 @@
 int main(int argc, char *argv[])
 {
     int buflen = 1024; //
-    char remote_ip[64] = "127.0.0.1";
+    char remote_ip[64] = "127.0.0.1"; 
     int ear_port = 0, mouth_port = 0;
     int ear_size = buflen, mouth_size = buflen, self_size = 1;
 

@@ -93,6 +93,7 @@ int regg(char reg[4],int flag){
         flag=1;
     }
     else{
+        
        
         array[3]=0;
         array[4]=0;

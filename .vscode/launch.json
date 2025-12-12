@@ -117,8 +117,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/matrix/Documents/vscode/system2",
-      "program": "/home/matrix/Documents/vscode/system2/build/Debug/outDebug",
+      "cwd": "/home/matrix/Documents/vscode/system2/assembler/new_assmb",
+      "program": "/home/matrix/Documents/vscode/system2/assembler/new_assmb/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

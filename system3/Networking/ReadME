@@ -1,0 +1,65 @@
+NOTE:
+The solutions provided are based on my understanding of the questions. Where the instructions were ambiguous, I interpreted them using my best understanding.
+
+
+PROGRAM 1 : BRAIN PROGRAM
+
+Files: brain.c , urecv.c , usend.c
+Logic of program:
+urecv.c is Ear. It waits on a port and receives message.
+usend.c is Mouth. It sends message to target IP and port.
+brain.c is center program.
+brain reads message from Ear (urecv).
+after reading full message, brain passes same message to Mouth (usend).
+mouth sends this message to display terminal.
+Simple fixed-value communication. All IP, ports, buffer size are inside code.
+run :make run_brain
+
+PROGRAM 2 : baby0 PROGRAM
+Files: baby0.c , urecv.c , usend.c
+Logic of program:
+Same logic as brain program (receive → brain → send).
+Difference: values not fixed in code.
+baby0.c reads all settings from config file:
+
+ear port
+mouth port
+message size
+ip
+system size
+
+After reading file, baby0 starts:
+ear receives message
+baby0 forward message
+mouth sends message
+This program supports easy change of ports and message size using config file.
+run : make run_baby0
+
+PROGRAM 3 : baby1 PROGRAM
+File: baby1.c
+Logic of program:
+Program handles large messages using chunk method.
+UDP cannot safely send big messages at once, so:
+splits message into small parts (default 1024 bytes).
+sends one chunk.
+waits for some time.
+sends next chunk.
+On receive side, it collects all chunks again and rebuild full message.
+Two programs run opposite port directions so both can send and receive.
+run: make run_baby1_send
+     make run_baby1_recv
+
+PROGRAM 4 : baby2 PROGRAM
+File: baby2.c
+Logic of program:
+Each terminal running baby2 behaves like a small node.
+When first terminal runs, it prints its own ID and port.
+When another terminal runs:
+it broadcasts “I am online” with its ID.
+First terminal receives this announcement and shows new node online.
+If third terminal runs, announcement goes to all running terminals.
+Simple local network announcement system using one port.
+
+run: make run_baby2
+
+after done all exit : clean
