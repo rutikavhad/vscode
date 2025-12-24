@@ -62,5 +62,6 @@ unsigned char modrm_encode_regreg(const char *r1, const char *r2){
         (array[4]<<3)|(array[5]<<2)|(array[6]<<1)|array[7];
 
     printf("ModRM Hex = %02X\n",final);
+    
     return final;
 }

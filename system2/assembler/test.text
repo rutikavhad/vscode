@@ -1,2 +1,0 @@
-ndisasm -b32 op.bin
-hexdump -C op.bin
