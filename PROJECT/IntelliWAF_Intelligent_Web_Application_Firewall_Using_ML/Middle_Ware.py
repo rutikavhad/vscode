@@ -1,18 +1,15 @@
 from mitmproxy import http
 from datetime import datetime
+import csv
 import os
 import math
-import csv
 
-OUTFILE = "Data_captures.txt"
-CSVFILE = "captures_combined.csv"
-MAX_BODY_CHARS = 200000 # turuncate vary large bodies for saftey
+import attacks
+
+CSVFILE = "traffic_events.csv"
 
 
-def OP_File():
-    if not os.path.exists(OUTFILE):
-        open(OUTFILE, "w", encoding="utf-8").close()
-
+def init_csv():
     if not os.path.exists(CSVFILE):
         with open(CSVFILE, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
@@ -22,165 +19,91 @@ def OP_File():
                 "method",
                 "url",
                 "path",
-                "body",
+                "attack_type",
                 "body_len",
                 "body_entropy",
-                "special_char_count",
-                "path_depth",
-                "query_length",
-                "has_file_upload",
-                "response_status",
-                "response_length"
+                "special_char_count"
             ])
 
-def Plain_String(x):
-    if x is None:
-        return "(none)"
-    try:
-         # mapping-like: headers, query etc
-        if hasattr(x, "items"):
-            try:
-                return ", ".join(f"{k}={v}" for k, v in x.items())
-            except Exception:
-                try:
-                    return ", ".join(f"{k}={v}" for k, v in list(x))
-                except Exception:
-                    return str(x)
-        # bytes -> try decode
-        if isinstance(x, (bytes, bytearray)):
-            try:
-                return x.decode("utf-8", errors="replace")
-            except Exception:
-                return f"[binary {len(x)} bytes]"
-        return str(x)
-    except Exception:
-        return repr(x)
 
-#Return headers as multi-line string 'Name: value'
-def format_headers(h):
-    try:
-        return "\n".join(f"{k}: {v}" for k, v in h.items())
-    except Exception:
-        return Plain_String(h)
-
-
-def shannon_entropy(s: str) -> float:
+def shannon_entropy(s):
     if not s:
         return 0.0
-    counts = {}
-    for ch in s:
-        counts[ch] = counts.get(ch, 0) + 1
-    probs = [v / len(s) for v in counts.values()]
-    return -sum(p * math.log2(p) for p in probs if p > 0)
+    freq = {}
+    for c in s:
+        freq[c] = freq.get(c, 0) + 1
+    return -sum(
+        (v / len(s)) * math.log2(v / len(s))
+        for v in freq.values()
+    )
 
 
-def request(flow: http.HTTPFlow) -> None:
-    OP_File()
+def request(flow: http.HTTPFlow):
+    init_csv()
     req = flow.request
 
-    timestamp = datetime.utcnow().isoformat() + "Z"
-    parts = ["---- CAPTURE START ----", f"timestamp: {timestamp}"]
-    
+    # =========================
+    # CLIENT IP + PORT (FIXED)
+    # =========================
+    client_ip = "unknown"
     try:
-        client_addr = flow.client_conn.address
-        client_ip = f"{client_addr[0]}:{client_addr[1]}" if client_addr else "(unknown)"
-    except Exception:
-        client_ip = "(unknown)"
-    # client ip (may be unknown in some environments)
-    parts.append(f"client_ip: {client_ip}")
-    parts.append(f"method: {Plain_String(req.method)}") # which methods are use (GET,POST,etc.)
-    parts.append(f"url: {Plain_String(req.pretty_url)}") #main URL
-    parts.append(f"path: {Plain_String(req.path)}") #path of web page
-    parts.append("---- HEADERS ----") 
-    parts.append(format_headers(req.headers)) #headers
-    parts.append("---- QUERY ----")
-    parts.append(Plain_String(req.query)) #Query Params
-    parts.append("---- BODY ----")
-    # body (text where possible, or binary indicator)
+        addr = flow.client_conn.address
+        if addr:
+            client_ip = f"{addr[0]}:{addr[1]}"
+    except:
+        pass
+
+    # =========================
+    # BODY SAFE HANDLING
+    # =========================
     try:
-        txt = req.get_text(strict=False)
-        if len(txt) > MAX_BODY_CHARS:
-            txt = txt[:MAX_BODY_CHARS] + "\n...(truncated)\n"
-        body_text = txt
-        parts.append(txt)
-    except Exception:
-        body_text = Plain_String(req.content)
-        parts.append(body_text)
+        body = req.get_text(strict=False) or ""
+    except:
+        body = ""
 
-    parts.append("---- CAPTURE END ----\n\n")
+    body_len = len(body)
+    entropy = round(shannon_entropy(body), 3) if body else 0.0
 
-    try:
-        with open(OUTFILE, "a", encoding="utf-8") as f:
-            f.write("\n".join(parts))
-    except Exception as e:
-        print("Failed to write capture:", e)
+    # =========================
+    # SPECIAL CHAR COUNT (FIXED → NEVER NaN)
+    # =========================
+    if body:
+        special_char_count = sum(
+            body.count(c)
+            for c in ['<', '>', '"', "'", ';', '|', '&', '$', '/', '\\']
+        )
+    else:
+        special_char_count = 0
 
+    # =========================
+    # ATTACK DETECTION
+    # =========================
+    attack_type = attacks.detect_attack_type(req, client_ip)
 
-def response(flow: http.HTTPFlow) -> None:
-    try:
-        OP_File()
-        req = flow.request
-        resp = flow.response
+    # =========================
+    # WRITE CSV (STRICT FORMAT)
+    # =========================
+    with open(CSVFILE, "a", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow([
+            datetime.utcnow().isoformat() + "Z",
+            client_ip,
+            req.method,
+            req.pretty_url,
+            req.path,
+            attack_type,
+            body_len,
+            entropy,
+            float(special_char_count)
+        ])
 
-        timestamp = datetime.utcnow().isoformat() + "Z"
-        parts = ["---- RESPONSE ENRICHMENT START ----", f"timestamp: {timestamp}"]
-
-        try:
-            client_addr = flow.client_conn.address
-            client_ip = f"{client_addr[0]}:{client_addr[1]}" if client_addr else "(unknown)"
-        except Exception:
-            client_ip = "(unknown)"
-
-        parts.append(f"client_ip: {client_ip}")
-        parts.append(f"method: {Plain_String(req.method)}")
-        parts.append(f"url: {Plain_String(req.pretty_url)}")
-
-        if resp:
-            parts.append(f"response_status: {Plain_String(resp.status_code)}")
-            resp_len = len(resp.raw_content) if getattr(resp, "raw_content", None) else len(resp.content or b"")
-            parts.append(f"response_length: {resp_len}")
-        else:
-            resp_len = 0
-            parts.append("response_status: (none)")
-
-        parts.append("---- RESPONSE ENRICHMENT END ----\n\n")
-
-        with open(OUTFILE, "a", encoding="utf-8") as f:
-            f.write("\n".join(parts))
-
-        # ML FEATURE EXTRACTION
-        #MAKE CSV FILE TO ML MODEL CAN READ THE DATA
-        try:
-            body_text = req.get_text(strict=False) or ""
-        except:
-            body_text = ""
-
-        body_len = len(body_text)
-        entropy = shannon_entropy(body_text)
-        special_count = sum(body_text.count(c) for c in ['<', '>', '"', "'", ';', '|', '&', '$', '/', '\\'])
-        path_depth = req.path.count('/')
-        query_length = len(req.query or "")
-        has_file_upload = 1 if "multipart/form-data" in req.headers.get("Content-Type","").lower() else 0
-        status = resp.status_code if resp else ""
-
-        with open(CSVFILE, "a", newline="", encoding="utf-8") as f: #Write data in csv file
-            writer = csv.writer(f)
-            writer.writerow([
-                timestamp,
-                str(flow.client_conn.address),
-                req.method,
-                req.pretty_url,
-                req.path,
-                body_text.replace("\n", "\\n"),
-                body_len,
-                round(entropy, 3),
-                special_count,
-                path_depth,
-                query_length,
-                has_file_upload,
-                status,
-                resp_len
-            ])
-
-    except Exception as e:
-        print("response() error:", e)
+    # =========================
+    # BLOCK ATTACKS
+    # =========================
+    if attack_type != "NORMAL":
+        status = 429 if attack_type == "DDOS" else 403
+        flow.response = http.Response.make(
+            status,
+            f"Blocked\nDetected: {attack_type}".encode(),
+            {"Content-Type": "text/plain"}
+        )
