@@ -16,13 +16,14 @@ def normalize(text):
 # =========================
 # SIGNATURES
 # =========================
-SQLI_SIGNS = [" or 1=1", "union select", "sleep(", "benchmark(", "--"]
-CMD_SIGNS = [";", "&&", "||", "|", "`", "$("]
-PATH_SIGNS = ["../", "..\\", "php://", "file://", "data://", "/etc/passwd"]
-XSS_SIGNS = ["<script", "</script>", "javascript:", "onerror=", "onload="]
+sqli = [" or 1=1", "union select", "sleep(", "benchmark(", "--","order by"]
+cmd = [";", "&&", "||", "|", "`", "$("]
+path = ["../", "..\\", "php://", "file://", "data://", "/etc/passwd","/config/","boot.ini"]
+xss = ["<script", "</script>", "javascript:", "onerror=", "onload=","alert("]
+nosql = ["$gt", "$ne", "$where", "$regex"]
 
-ALLOWED_UPLOAD_EXT = [".png", ".jpg", ".jpeg", ".gif", ".pdf", ".txt","text"]
-BLOCKED_UPLOAD_EXT = [".php", ".py", ".exe", ".jsp", ".sh","js",".bash",".c",".asm",".java",".class"]
+allowed_txt = [".png", ".jpg", ".jpeg", ".gif", ".pdf", ".txt","text"]
+blocked_txt = [".php", ".py", ".exe", ".jsp", ".sh","js",".bash",".c",".asm",".java",".class","xml]
 
 # =========================
 # FILE UPLOAD CHECK (ONLY)
@@ -49,7 +50,7 @@ def check_file_upload(req):
         fname = fname.lower()
 
         # block dangerous extensions
-        for ext in BLOCKED_UPLOAD_EXT:
+        for ext in blocked_txt:
             if fname.endswith(ext):
                 return "FILE_UPLOAD_ABUSE"
 
@@ -58,7 +59,7 @@ def check_file_upload(req):
             return "FILE_UPLOAD_ABUSE"
 
         # allow safe extensions
-        for ext in ALLOWED_UPLOAD_EXT:
+        for ext in allowed_txt:
             if fname.endswith(ext):
                 return "NORMAL"
 
@@ -85,16 +86,17 @@ def check_other_attacks(req):
 
     norm_inputs = [normalize(i) for i in inputs]
 
-    if any(any(s in d for s in SQLI_SIGNS) for d in norm_inputs):
+    if any(any(s in d for s in sqli) for d in norm_inputs):
         attacks.append("SQL_INJECTION")
 
-    if any(any(s in d for s in CMD_SIGNS) for d in norm_inputs):
+    if any(any(s in d for s in cmd) for d in norm_inputs):
         attacks.append("COMMAND_INJECTION")
 
-    if any(any(s in d for s in PATH_SIGNS) for d in norm_inputs):
+    if any(any(s in d for s in path) for d in norm_inputs):
         attacks.append("PATH_TRAVERSAL")
 
-    if any(any(s in d for s in XSS_SIGNS) for d in norm_inputs):
+    if any(any(s in d for s in xss) for d in norm_inputs):
         attacks.append("XSS")
-
+    if any(any(s in d for s in nosql) for d in norm_inputs):
+        attacks.append("NOSQL")
     return attacks

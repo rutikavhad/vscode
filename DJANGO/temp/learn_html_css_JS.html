@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<style>
+    h1{color: red;}
+    button{
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: white;
+        border: 2px solid #bc8f8f;
+        background-color: black;
+        
+    }
+</style>
+<head><title>hellow</title></head>
+<html lang="eng">
+
+    <body>
+
+        <h1>hello</h1>
+        <button type="button">click me</button>
+        <script>
+            var button=document.querySelector("button");
+            button.addEventListener("click",myfunc);
+            function myfunc(){
+                alert("button fired");
+            }
+
+
+            var  title=document.querySelector("h1");
+            title.innerHTML="this is anather title";
+        </script>
+    </body>
+
+
+</html>
