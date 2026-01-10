@@ -1,0 +1,77 @@
+00000000                 msg1        db "Hello World!", 10
+00000000                 msg1_end:
+00000000                 msg1_len    dd msg1_end       ; store pointer just to test symbol->imm32
+00000000                 msg1_size   dd 13
+00000000                 num1        dd 12345
+00000000                 word1       dw 0x1122
+00000000                 quad1       dq 0x1122334455667788
+00000000                 string2     db "Another string for testing",0
+00000000                 arr1        db 10,20,30,40,50
+00000000                 arr2        dd 100,200,300,400
+00000000                 buffer1     resb 64
+00000000                 buffer2     resd 16
+00000000                 bigspace    resq 32
+00000000                 global _start
+00000000                 _start:
+00000000  B804000000     mov eax, 4          ; immediate
+00000005  BB00000000     mov ebx, num1       ; symbol immediate
+0000000A  8B0C2500000000   mov ecx, [num1]     ; absolute memory load
+00000011  8B142500000000   mov edx, [msg1]     ; load first byte of msg1
+00000018  8B342500000000   mov esi, [msg1_size]
+0000001F  BF00000000     mov edi, msg1_size  ; immediate symbol
+SIB Hex = 64
+00000024  8B444B10       mov eax, [ebx + ecx*2 + 16]
+SIB Hex = 84
+0000002B  8B04BC         mov eax, [esp + edi*4 + 128]
+SIB Hex = C4
+00000032  8B14FE         mov edx, [esi + esi*8 + 256]
+SIB Hex = 00
+00000039  8B0C80         mov ecx, [eax + 4]              ; register + disp
+SIB Hex = 80
+00000040  8B5C0420       mov ebx, [esp + 32]             ; base + small disp
+ModRM Hex = C0
+00000047  31C0           xor eax, eax
+ModRM Hex = DB
+00000049  31DB           xor ebx, ebx
+ModRM Hex = C9
+0000004B  31C9           xor ecx, ecx
+ModRM Hex = D8
+0000004D  01D8           add eax, ebx
+ModRM Hex = C1
+0000004F  29C1           sub ecx, eax
+ModRM Hex = C8
+00000051  39C8           cmp eax, ecx
+00000053  40             inc eax
+00000054  4B             dec ebx
+00000055  50             push eax
+00000056  58             pop  eax
+00000057  B814000000     mov eax, 20
+0000005C  BB04000000     mov ebx, 4
+ModRM Hex = C3
+00000061  0FAFC3         mul eax, ebx
+ModRM Hex = D8
+00000064  F7D8           div eax, ebx
+00000066                 loop_start:
+ModRM Hex = D8
+00000066  01D8           add eax, 1
+ModRM Hex = D8
+00000068  39D8           cmp eax, 50
+0000006A  E902000000     jmp end_check
+0000006F                 middle_point:
+ModRM Hex = D8
+0000006F  29D8           sub eax, 5
+00000071                 end_check:
+ModRM Hex = D8
+00000071  39D8           cmp eax, 50
+00000073  E9EEFFFFFF     jmp loop_start
+00000078  B804000000     mov eax, 4          ; sys_write
+0000007D  BB01000000     mov ebx, 1          ; stdout
+00000082  B900000000     mov ecx, msg1       ; message
+00000087  BA0D000000     mov edx, 13         ; length
+0000008C  CD80           int 0x80
+0000008E  B801000000     mov eax, 1          ; sys_exit
+ModRM Hex = DB
+00000093  31DB           xor ebx, ebx
+00000095  CD80           int 0x80
+
+Assembling Done.

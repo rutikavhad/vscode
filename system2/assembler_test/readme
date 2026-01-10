@@ -1,0 +1,109 @@
+Project Overview
+
+This project is a small custom assembler core.
+It reads instructions (like in test.asm) and converts them into binary output (op.bin).
+Encoding parts are split into modules:
+
+modrm.c – builds ModR/M byte
+
+sib.c – builds SIB byte
+
+databss.c / databss.h – stores .data / .bss section info
+
+main.c – main entry; parses file, resolves symbols, writes binary
+
+makefile – builds everything
+
+op.bin – final output binary (generated automatically)
+
+This will:
+   - supports db/dw/dd/dq/resb/resd/resq/rest
+   - supports mov reg, imm ; mov reg, reg ; mov reg, [symbol] ; mov reg, [reg+reg*scale+disp]
+   - supports add/sub/xor/cmp/push/pop/inc/dec/mul/div/jmp/int
+
+How to Build
+
+Open terminal inside this folder:
+
+    '''bash
+    make
+    make run_assembler
+
+
+Put test.asm and op.bin file 
+
+
+    '''bash
+    make clean
+
+
+To read this .bin file 
+
+    '''bash
+    ndisasm -b32 op.bin  
+
+
+#Module Descriptions how they will works
+
+#modrm.c
+Takes reg, rm, mode
+Builds ModR/M byte
+Returns final encoded byte
+This do if instruction is:
+register → register
+register → memory
+memory → register
+register → immediate
+jump
+arithmetic
+
+#sib.c
+Takes scale, index, base
+Builds SIB byte for memory addressing
+This do if instruction is:
+register → register
+register → memory
+memory → register
+register → immediate
+jump
+arithmetic
+
+#databss.c / databss.h
+Stores all .data variables
+Stores .bss reserved memory
+Resolves symbol → address mapping
+This work as SYMBOL TABLE
+This calculate only section .bss and .data part
+This not print output as in diaplay but give in .bin file 
+This section will be hide 
+
+#main.c
+Loads test.asm
+Parses tokens
+Calls modrm/sib as needed
+Resolves labels
+Writes raw bytes to op.bin
+This work as token
+Phase ONE
+Read each line.
+Break line into tokens:
+instruction (mov, add, jmp, …)
+operands (eax, [ebx+4], num1, etc.)
+Store tokens for next stages.
+
+
+read line
+↓
+tokenize
+↓
+if label → store address
+↓
+if .data/.bss → store symbol & address
+↓
+if instruction → detect type
+        if needs modrm → call build_modrm()
+        if needs sib → call build_sib()
+        if needs disp → write disp
+        if needs imm → write immediate
+↓
+write all bytes to op.bin
