@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Tasks</title>
+</head>
+<body>
+    <h2>My Tasks</h2>
+
+    <form method="post" action="/add">
+        <input name="title" placeholder="New Task" required>
+        <button type="submit">Add Task</button>
+    </form>
+
+    <ul>
+        {% for task in tasks %}
+            <li>{{ task.title }}</li>
+        {% else %}
+            <li>No tasks yet</li>
+        {% endfor %}
+    </ul>
+
+    <br>
+    <a href="/logout">Logout</a>
+</body>
+</html>

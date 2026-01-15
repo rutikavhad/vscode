@@ -17,6 +17,20 @@
             margin:0;
             padding:0;
         }
+        
+        .box {
+            background: #020617;
+            padding: 40px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0 0 20px rgba(255,0,0,0.3);
+        }
+        .attack {
+            color: #ef4444;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
         header {
             background-color:#fff;
             margin:0;
@@ -136,7 +150,7 @@
 <body>
 <header>
         <h1>Hosting Server Connect Timeout</h1>
-        <h2>HTTP 502 — Unable to Connect to the Origin Server</h2>
+        <h2>HTTP 403 — Unable to Connect to the Origin Server</h2>
         <b>Please try again in a few minutes</b>
         <div class="illustration">
  <div class="icon">
@@ -159,8 +173,9 @@
                 <b class="block">Error Details:</b>
                 <hr>
                 <ul>
-                    <li>Error Code: <b>HTTP 502</b></li>
-                    <li>Error Message: Backend or gateway connection timeout.</li>
+                    <li>Error Code: <b>HTTP 403</b></li>
+                    <li>🚫 Access Blocked</li>
+                    <li><strong>Reason: <p class="attack">{{ATTACK_TYPE}}</p></strong></li>
                     <li>Server ID: <b>19012</b></li>
                 </ul>
             </div>
@@ -168,12 +183,15 @@
                 <b class="block">What's going on?</b>
                 <hr>
                 <ul>
-                    <li>Origin server might be down</li>
+                    <li>If you believe this is a mistake, contact the administrator.</li>
                     <li>Server Network blocked by Origin Firewall</li>
                 </ul>
             </div>
         </div>
     </header>
+
+     
+        	
     
     
    <div class="content">

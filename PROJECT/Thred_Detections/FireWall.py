@@ -1,11 +1,11 @@
-from mitmproxy import http
-from datetime import datetime
-import csv
-import os
-import math
+from mitmproxy import http  #SERVER
+from datetime import datetime 
+import csv #LOG FILE
+import os 
+import math #TO CHECK BODY ENTROPY
 import time
 
-import attacks   #attacks.py
+import attacks   #attacks.py SIGN ATTACKS
 
 
 #CSV AS LOG FILE TO DISPLAY ATTACKS
@@ -184,11 +184,16 @@ def request(flow: http.HTTPFlow):
             ])
 
         # BLOCK REQUEST
+        blocked_page = HTML_RESPONSE.replace(
+            "{{ATTACK_TYPE}}",'BRUTE_FORCE'
+            )
         flow.response = http.Response.make(
-            429,
-            b"Too Many Requests - DDoS Protection Active",
-            {"Content-Type": "text/plain"}
-        )
+            403,
+            blocked_page.encode("utf-8"),
+            {
+                "Content-Type": "text/html"
+            }
+            )
         return
     
     # =========================
@@ -213,11 +218,23 @@ def request(flow: http.HTTPFlow):
                 ])
 
             # BLOCK REQUEST
-            flow.response = http.Response.make(
-                403,
-                b"Brute Force Detected - Access Temporarily Blocked",
-                {"Content-Type": "text/plain"}
+            blocked_page = HTML_RESPONSE.replace(
+            "{{ATTACK_TYPE}}",'BRUTE_FORCE'
             )
+
+            flow.response = http.Response.make(
+            403,
+            blocked_page.encode("utf-8"),
+            {
+                "Content-Type": "text/html"
+            }
+            )
+            #TEST OLD
+            # flow.response = http.Response.make(
+            #     403,
+            #     b"Brute Force Detected - Access Temporarily Blocked",
+            #     {"Content-Type": "text/plain"}
+            # )
             return
 
 
@@ -267,10 +284,16 @@ def request(flow: http.HTTPFlow):
     # BLOCK IF ATTACK & SHOW WEB PAGE
     # =========================
     if attack_type != "NORMAL":
+        blocked_page = HTML_RESPONSE.replace(
+        "{{ATTACK_TYPE}}",
+        attack_type
+        )
+
         flow.response = http.Response.make(
             403,
-            HTML_RESPONSE.encode("utf-8"),
+            blocked_page.encode("utf-8"),
             {
-            	"Content-Type":"text/html"
+                "Content-Type": "text/html"
             }
         )
+
