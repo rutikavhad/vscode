@@ -8,7 +8,7 @@
         <meta name="Auther" content="Rutik Avhad">
         
         {% block 'title' %}
-            <title>AUTOMAX. SHOP </title>
+            <title>MotoMart. SHOP </title>
         {% endblock 'title' %}
             
 
@@ -40,7 +40,7 @@
                 {% if request.user.is_authenticated %}
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li>
-                        <a href="{}" class="nav-link px-2">Profile</a>
+                        <a href="{%url 'profile_update' %}" class="nav-link px-2">Profile</a>
                     </li>
                 </ul>
                 <div class="text-end">
@@ -58,10 +58,10 @@
 {%block 'footer'%}
 <footer class="footer text-muted bg-dark py-5">
     <div class="container">
-        <p class=float-end mb-1>Poweres BY <a href="https://github.com/rutikavhad">DJango</a>
+        <p class=float-end mb-1>Poweres BY <a href="https://github.com/rutikavhad">GITHUB</a>
         </p>
-        <p class="mb-1">AutoMax - Best place to Buy & Sell Cars</p>
-        <p class="mb-0">@ Copywrite {%now 'Y'%} <a href="">AutoMax</a></p>
+        <p class="mb-1">MotoMart - Best place to Buy & Sell Cars</p>
+        <p class="mb-0">@ Copywrite {%now 'Y'%} <a href="{%url 'home'%}">MotoMart</a></p>
     </div>
 </footer>
 {%endblock 'footer'%}

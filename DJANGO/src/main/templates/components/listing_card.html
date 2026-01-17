@@ -17,10 +17,10 @@
         <p class="card-text">{{listings.description}}</p>
         <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
-                <a href="" type="button"
+                <a href="{%url 'listing' id=listings.id%}" type="button"
                     class="btn btn-sm btn-outline-secondary">View</a>
                 {% if listings.seller.user == request.user %}
-                <a href="{}" type="button" class="btn btn-sm btn-outline-secondary">Edit</a>
+                <a href="{% url 'edit' id=listings.id %}" type="button" class="btn btn-sm btn-outline-secondary">Edit</a>
                 {% endif %}
             </div>
             <small class="text-muted">{{listings.updated_at}}</small>

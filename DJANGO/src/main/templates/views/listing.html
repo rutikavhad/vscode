@@ -1,8 +1,8 @@
-{% comment %} {% extends 'base/base.html' %}
+{% extends 'base/base.html' %}
 {% load static %}
 {% block 'title' %}
-<title>AutoMax .
-    {{ listing.model }} Listing
+<title>MotoMart .
+    {{ listing.model }} listing
 </title>
 {% endblock %}
 {% block 'body' %}
@@ -14,7 +14,7 @@
                     loading="lazy">
             </div>
             <div class="col-lg-6">
-                <h1 class="display-5 fw-bold lh-1 mb-3">{{ listing.model }}</h1>
+                <h1 class="display-5 fw-bold lh-1 mb-3">{{ listing.barnd }}</h1>
                 <p class="lead">{{ listing.seller.user.username }} - {{ listing.updated_at }}</p>
             </div>
         </div>
@@ -28,16 +28,12 @@
                         <table class="table text-center">
                             <tbody>
                                 <tr>
-                                    <th scope="row" class="text-start">Brand</th>
-                                    <td> {{listing.brand|capfirst }}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="text-start">Vin</th>
-                                    <td> {{listing.vin }}</td>
+                                    <th scope="row" class="text-start">Model</th>
+                                    <td> {{listing.model|capfirst }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row" class="text-start">Mileage</th>
-                                    <td> {{listing.mileage }}</td>
+                                    <td> {{listing.milage }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row" class="text-start">Color</th>
@@ -45,7 +41,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row" class="text-start">Engine</th>
-                                    <td> {{listing.engine }}</td>
+                                    <td> {{listing.engin }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row" class="text-start">Transmisson</th>
@@ -85,20 +81,5 @@
         </div>
     </div>
 </main>
-<script>
-    $("#sendEmail").click(function () {
-        $.ajax({
-            type: "POST",
-            url: "{% url 'inquire_listing' id=listing.id %}",
-            data: { 'csrfmiddlewaretoken': '{{ csrf_token }}' },
-            dataType: "json",
-            success: function (r) {
-                alert("Email sent successfully!")
-            },
-            error: function (rs, e) {
-                alert(rs.info)
-            }
-        })
-    });
-</script>
-{% endblock %} {% endcomment %}
+
+{% endblock %}

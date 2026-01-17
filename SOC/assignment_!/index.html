@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Photo Album</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Photo Album</h2>
+
+<div id="upload-section">
+  <input type="file" id="upload" multiple accept="image/*">
+  <button id="deleteSelected">Delete Selected</button>
+  <button id="slideshowSelected">Slideshow</button>
+  <button id="fullscreenBtn">⛶ Fullscreen</button>
+
+</div>
+
+<div id="gallery"></div>
+
+<div id="slideshow">
+  <button id="prev">◀</button>
+  <img id="slide">
+  <button id="next">▶</button>
+</div>
+
+<!-- Preview Modal -->
+<div id="preview">
+  <img id="previewImg">
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

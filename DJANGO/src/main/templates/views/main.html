@@ -6,12 +6,11 @@
 <div class="d-flex h-100 text-center text-white index">
     <video autoplay muted loop id="myVideo">
         <source src="{% static 'videos/bg.mp.4' %}" type="video/mp4">
-        <!-- Credit: https://www.pexels.com/@kelly-l-1179532 (Pexels.com)-->
     </video>
     <div class="d-flex w-100 h-100 p-3 mx-auto flex-column main-content">
         <header class="mb-auto">
             <div>
-                <h3 class="float-md-start mb-0">AutoMax</h3>
+                <h3 class="float-md-start mb-0">MotoMart</h3>
                 <nav class="nav nav-masthead justify-content-center float-md-end">
                     {% if request.user.is_authenticated %}
                     <a class="nav-link active" aria-current="page" href="{%url 'home'%}">Home</a>
@@ -24,15 +23,15 @@
         <main class="px-3">
             <h2>Find a deal near you!</h2>
             <p class="lead">Looking to buy or sell a used car? We've got you
-                covered. </br> AutoMax is the leading used car marketplace.</p>
+                covered. </br> MotoMart is the leading used car marketplace.</p>
             <p class="lead">
                 <a href="{%url 'register'%}"
                     class="btn btn-lg btn-secondary fw-bold border-white bg-white">Register</a>
             </p>
         </main>
         <footer class="mt-auto text-white-50">
-            <p>Copyright © {% now 'Y' %} <a href="" class="text-white">AutoMax</a> by <a href="https://preneure.com"
-                    class="text-white">Preneure.com</a></p>
+            <p>Copyright © {% now 'Y' %} <a href="{%url 'login'%}" class="text-white">MotoMart</a> by <a href="https://github.com/rutikavhad/MotoMart"
+                    class="text-white">Source_Code</a></p>
         </footer>
     </div>
 </div>

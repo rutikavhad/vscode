@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CSS Rain Background</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
+
+<body class="main_body">
+  <!-- Matrix Background -->
+  <canvas id="matrix"></canvas>
+  <!-- header -->
+    <header class="site-header">
+    <h1>IntelliWAF</h1>
+  </header>
+
+  <!-- Main content -->
+   <main class="site-main">
+  <div class="switch">
+    <div class="toggle-container">
+    <div class="toggle-wrap">
+    <input class="toggle-input" id="holo-toggle" type="checkbox" />
+    <label class="toggle-track" for="holo-toggle">
+      <div class="track-lines">
+        <div class="track-line"></div>
+      </div>
+
+      <div class="toggle-thumb">
+        <div class="thumb-core"></div>
+        <div class="thumb-inner"></div>
+        <div class="thumb-scan"></div>
+        <div class="thumb-particles">
+          <div class="thumb-particle"></div>
+          <div class="thumb-particle"></div>
+          <div class="thumb-particle"></div>
+          <div class="thumb-particle"></div>
+          <div class="thumb-particle"></div>
+        </div>
+      </div>
+
+      <div class="toggle-data">
+        <div class="data-text off">OFF</div>
+        <div class="data-text on">ON</div>
+        <div class="status-indicator off"></div>
+        <div class="status-indicator on"></div>
+      </div>
+
+      <div class="energy-rings">
+        <div class="energy-ring"></div>
+        <div class="energy-ring"></div>
+        <div class="energy-ring"></div>
+      </div>
+
+      <div class="interface-lines">
+        <div class="interface-line"></div>
+        <div class="interface-line"></div>
+        <div class="interface-line"></div>
+        <div class="interface-line"></div>
+        <div class="interface-line"></div>
+        <div class="interface-line"></div>
+      </div>
+
+      <div class="toggle-reflection"></div>
+      <div class="holo-glow"></div>
+    </label>
+  </div>
+</div>
+</div>
+</main>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>© 2026 Your Name</p>
+  </footer>
+
+    <!-- Matrix script stays here -->
+<script>
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
+
+const letters =
+  "アァカサタナハマヤャラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const fontSize = 16;
+let columns = Math.floor(canvas.width / fontSize);
+let drops = Array(columns).fill(0);
+
+function draw() {
+  // Fade background slightly (trail effect)
+  ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "#00ff66";
+  ctx.font = fontSize + "px monospace";
+
+  for (let i = 0; i < drops.length; i++) {
+    const text = letters.charAt(
+      Math.floor(Math.random() * letters.length)
+    );
+
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+    if (
+      drops[i] * fontSize > canvas.height &&
+      Math.random() > 0.975
+    ) {
+      drops[i] = 0;
+    }
+
+    drops[i]++;
+  }
+
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
+</body>
+</html>
