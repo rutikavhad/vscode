@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+</head>
+<body>
+    <h1>Calculator</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="number" name="a" required>
+        <input type="number" name="b" required>
+
+        <select name="operation">
+            <option value="add">Add</option>
+            <option value="sub">Subtract</option>
+            <option value="mul">Multiply</option>
+            <option value="div">Divide</option>
+        </select>
+
+        <button type="submit">Calculate</button>
+    </form>
+    {% if result is not None %}
+        <h2>Result: {{ result }}</h2>
+    {% endif %}
+
+    <h1>THIS Kaprekar's Routine</h1>
+    <form method="post">
+        {% csrf_token %}
+         <input type="number" name="num" required>
+        <button type="submit">Enter</button>
+    </form>
+    <samp>4 digit= 6174</samp><br>
+    <samp>3 digit= 495</samp><br>
+    <samp>2 digit= 9</samp><br>
+    
+
+    {% if output is not None %}
+        <h2>output: {{ output }}</h2>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Student</title>
+</head>
+<body>
+
+<h2>Update Student</h2>
+
+<form method="post">
+    {% csrf_token %}
+    ID: <input type="text" name="id" value="{{ user.id }}" required><br><br>
+   <button type="submit"> <a href="{%url 'delete' user.id %}"></a>delete</button>
+</form>
+
+<a href="{% url 'read' %}">Back</a>
+
+</body>
+</html>

@@ -20,7 +20,7 @@ public class linkedlist {
         head=newnNode;
         return;
     }
-    Node temp =head;
+    Node temp = head;
     while (temp.next!=null) {
         temp=temp.next;
     }

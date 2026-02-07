@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Neon Weekday Finder</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at top, #0f2027, #000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.neon-card {
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #00ffff;
+    padding: 35px;
+    width: 320px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow:
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        inset 0 0 15px #00ffff;
+}
+
+.neon-card h2 {
+    color: #00ffff;
+    margin-bottom: 25px;
+    text-shadow:
+        0 0 5px #00ffff,
+        0 0 10px #00ffff;
+}
+
+input[type="date"] {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 2px solid #ff00ff;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    outline: none;
+    box-shadow: 0 0 10px #ff00ff;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 2px solid #00ff99;
+    border-radius: 8px;
+    color: #00ff99;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #00ff99;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #00ff99;
+    color: #000;
+    box-shadow:
+        0 0 10px #00ff99,
+        0 0 25px #00ff99;
+}
+
+.result {
+    margin-top: 25px;
+    font-size: 22px;
+    color: #ffff00;
+    text-shadow:
+        0 0 10px #ffff00,
+        0 0 20px #ffff00;
+}
+</style>
+</head>
+
+<body>
+<form method="post">
+    {% csrf_token %}
+<div class="neon-card">
+    <h2>WEEKDAY FINDER</h2>
+    <input type="text" placeholder="DD" name="dd"id="dateInput">
+    <input type="text" placeholder="MM" name="mm" id="dateInput">
+    <input type="text" placeholder="YYYY" name="yyyy"id="dateInput">
+    <button type="submit">CHECK DAY</button>
+    
+</div>
+</form>
+
+{% if result is not None %}
+
+ <div class="result" id="result"><h2>Result:{{result}}</h2></div>
+
+{% endif %}
+    
+<div class="result" id="result"></div>
+</body>
+</html>

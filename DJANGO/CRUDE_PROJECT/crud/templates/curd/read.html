@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student List</title>
+</head>
+<body>
+
+<h2>Students</h2>
+<a href="{% url 'create' %}"><button>Add New Student</button></a>
+
+
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+    </tr>
+
+    {% for student in user %}
+    <tr>
+        <td>{{student.id}}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.age }}</td>
+    </tr>
+    
+    {% endfor %}
+</table>
+
+<form method="get" action="{% url 'update' 0 %}"
+      onsubmit="this.action=this.action.replace('/0/', '/' + this.student_id.value + '/');">
+
+    <select name="student_id" required>
+        <option value="">-- Select Student --</option>
+        {% for student in user %}
+            <option value="{{ student.id }}">
+                {{ student.name }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Update</button>
+</form>
+
+
+
+<form method="get" action="{% url 'delete' 0 %}"
+      onsubmit="return confirm('Are you sure?') &&
+      (this.action=this.action.replace('/0/', '/' + this.student_id.value + '/'));">
+
+    <select name="student_id" required>
+        <option value="">-- Select Student --</option>
+        {% for student in user %}
+            <option value="{{ student.id }}">
+                {{ student.name }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Delete</button>
+</form>
+<form method="POST" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
+
+
+
+
+</body>
+</html>

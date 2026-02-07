@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IntelliWAF SOC</title>
+  <link rel="stylesheet" href="/static/css/hacker.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<header>
+  <span>☠ IntelliWAF SOC</span>
+  <span class="right">root@waf | ONLINE</span>
+</header>
+
+<section class="grid">
+
+  <!-- LIVE TERMINAL -->
+  <div class="panel terminal" id="terminal"></div>
+
+  <!-- STATS -->
+  <div class="panel">
+    <h4>ATTACK TYPES</h4>
+    <canvas id="typeChart"></canvas>
+  </div>
+
+  <!-- MAP PLACEHOLDER -->
+  <div class="panel">
+    <h4>WORLD ATTACK MAP</h4>
+    <div class="map-placeholder">[ GeoIP Map Hook ]</div>
+  </div>
+
+</section>
+
+<script src="/static/js/dashboard.js"></script>
+</body>
+</html>

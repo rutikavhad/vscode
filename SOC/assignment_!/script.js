@@ -75,13 +75,13 @@ function renderGallery() {
   });
 }
 
-/* Delete Selected */
+// Delete Selected 
 deleteBtn.onclick = () => {
   photos = photos.filter((_, i) => !selected.has(i));
   renderGallery();
 };
 
-/* Slideshow */
+// Slideshow
 
 
 slideBtn.onclick = () => {
@@ -94,7 +94,7 @@ slideBtn.onclick = () => {
   slideIndex = 0;
   showSlide();
 
-  clearInterval(slideTimer); // safety
+  clearInterval(slideTimer); // show next slide after 5 sec
   slideTimer = setInterval(nextSlide, 5000);
 };
 
@@ -126,7 +126,7 @@ prevBtn.onclick = () => {
   showSlide();
 };
 
-/* Preview Close */
+// Preview Close click anyware
 preview.onclick = () => {
   preview.style.display = "none";
   previewImg.src = "";

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact</title>
+</head>
+<style>
+    .name_input {
+        color:red !important;
+    }
+    .my_text{
+        color:pink;
+    }
+    
+</style>
+<body>
+    <h2>Contact Form</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>

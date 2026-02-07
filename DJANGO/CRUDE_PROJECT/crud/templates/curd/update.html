@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Student</title>
+</head>
+<body>
+
+<h2>Update Student</h2>
+
+<form method="post">
+    {% csrf_token %}
+    ID: <input type="number" name="id" value="{{user.id}}" required> <br><br>
+    Name: <input type="text" name="name" value="{{ user.name }}" required><br><br>
+    Age: <input type="number" name="age" value="{{ user.age }}" required><br><br>
+
+    <button type="submit">Update</button>
+</form>
+
+<a href="{% url 'read' %}">Back</a>
+
+</body>
+</html>
