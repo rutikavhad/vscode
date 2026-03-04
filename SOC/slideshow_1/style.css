@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background: #f2f2f2;
+  background: #d7fffc;
   margin: 0;
   padding: 15px;
 }
@@ -94,4 +94,33 @@ h2 {
   width: auto;
   height: 90vh;
   max-width: 100%;
+}
+
+
+.count-controls {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px;
+}
+
+.count-controls button {
+  width: 25px;
+}
+
+.slide-controls {
+  margin-left: 100px;
+  margin-top: 15px;
+  display: block;
+  gap: 10px;
+  justify-content: center;
+}
+
+.slide-controls button{
+background-color: #ffffff;
+color: black;
+text-shadow: red;
+border-color: yellow;
+border-radius: 20px;
+
 }
