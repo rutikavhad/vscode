@@ -1,0 +1,916 @@
+{
+  "target": "https://juice-shop.herokuapp.com/",
+  "pages_crawled": 100,
+  "total_endpoints": 151,
+  "endpoints": [
+    {
+      "url": "https://juice-shop.herokuapp.com/2fa/assets/public/favicon_js.ico",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/2fa/chunk-24EZLZ4I.js",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/2fa/chunk-BBQJZN7H.js",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/2fa/chunk-I2PSG472.js",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/2fa/chunk-TJME2352.js",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/2fa/chunk-TWZW5B45.js",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/2fa/enter",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/2fa/main.js",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/2fa/polyfills.js",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/2fa/scripts.js",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/2fa/styles.css",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/application-configuration",
+      "risk": "HIGH",
+      "tags": [
+        "admin"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/forgot-password",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/login",
+      "risk": "HIGH",
+      "tags": [
+        "authentication"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/admin",
+      "risk": "HIGH",
+      "tags": [
+        "admin",
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/saveLoginIp",
+      "risk": "HIGH",
+      "tags": [
+        "authentication",
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/user/authentication-details/",
+      "risk": "HIGH",
+      "tags": [
+        "authentication",
+        "authorization",
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/user/change-password?current=",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow",
+        "authorization",
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/user/login",
+      "risk": "HIGH",
+      "tags": [
+        "authentication",
+        "authorization",
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/user/reset-password",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow",
+        "authorization",
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/walletNFTVerify",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/accounting",
+      "risk": "MEDIUM",
+      "tags": [
+        "authorization"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/api/Addresss",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/api/BasketItems",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/api/Cards",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/api/Challenges",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/api/Challenges/?key=nftMintChallenge",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/api/Complaints",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/api/Deliverys",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/api/Feedbacks",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/api/Hints",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/api/Products",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/api/Quantitys",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/api/Recycles",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/api/SecurityAnswers",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/api/SecurityQuestions",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/api/Users",
+      "risk": "MEDIUM",
+      "tags": [
+        "authorization",
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/api/\\\"/",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/api/\\\"/ftp/legal.md\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/api/\\\"http:/htmledit.squarefree.com\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/api/\\\"https:/blockchain.info/address/1AbKfgvw9psQ41NbLi8kufDQTezwG8DRZm\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/api/\\\"https:/cataas.com/cat\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/api/\\\"https:/en.wikipedia.org/wiki/Easter_egg_(media)\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/api/\\\"https:/github.com/Neo23x0/sigma\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/api/\\\"https:/github.com/prometheus/prometheus\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/api/\\\"https:/hakipedia.com/index.php/Poison_Null_Byte\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/data-export",
+      "risk": "MEDIUM",
+      "tags": [
+        "data-transfer"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/file-upload",
+      "risk": "MEDIUM",
+      "tags": [
+        "data-transfer"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/profile",
+      "risk": "MEDIUM",
+      "tags": [
+        "authorization"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/captcha",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/chatbot",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/continue-code",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/continue-code-findIt",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/continue-code-findIt/apply/",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/continue-code-fixIt",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/continue-code-fixIt/apply/",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/continue-code/apply/",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/country-mapping",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/deluxe-membership",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/image-captcha/",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/memories",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/order-history",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/products",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/repeat-notification",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/track-order",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/user",
+      "risk": "MEDIUM",
+      "tags": [
+        "authorization",
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/user/security-question?email=",
+      "risk": "MEDIUM",
+      "tags": [
+        "authorization",
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/user/whoami",
+      "risk": "MEDIUM",
+      "tags": [
+        "authorization",
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/wallet/balance",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/rest/web3",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/10",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/16",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/160",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/2",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/20",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/40",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/5",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/6",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/8",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/about",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/address/assets/public/favicon_js.ico",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/address/chunk-24EZLZ4I.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/address/chunk-BBQJZN7H.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/address/chunk-I2PSG472.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/address/chunk-TJME2352.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/address/chunk-TWZW5B45.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/address/create",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/address/edit/",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/address/edit/assets/public/favicon_js.ico",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/address/edit/chunk-24EZLZ4I.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/address/edit/chunk-BBQJZN7H.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/address/edit/chunk-I2PSG472.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/address/edit/chunk-TJME2352.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/address/edit/chunk-TWZW5B45.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/address/edit/main.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/address/edit/polyfills.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/address/edit/scripts.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/address/edit/styles.css",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/address/main.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/address/polyfills.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/address/saved",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/address/scripts.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/address/select",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/address/styles.css",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/application-version",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/assets/i18n/",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/assets/public/favicon_js.ico",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/basket",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/chatbot",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/chunk-24EZLZ4I.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/chunk-BBQJZN7H.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/chunk-I2PSG472.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/chunk-TJME2352.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/chunk-TWZW5B45.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/complain",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/contact",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/dataerasure",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/delivery-method",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/deluxe-membership",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/engine.io",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/erasure-request",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/main.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/nftMintListen",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/nftUnlocked",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/order-completion",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/order-history",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/order-summary",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/orders",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/payment",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/photo-wall",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/polyfills.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/recycle",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/register",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/respond",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/reviews",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/saved-payment-methods",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/score-board",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/scripts.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/search",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/snippets",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/snippets/fixes",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/snippets/verdict",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/socket.io",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/status",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/styles.css",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/submitKey",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/track-result",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/track-result/new",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/wallet",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "https://juice-shop.herokuapp.com/walletExploitAddress",
+      "risk": "LOW",
+      "tags": []
+    }
+  ]
+}

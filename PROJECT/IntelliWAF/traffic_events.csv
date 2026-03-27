@@ -1169,3 +1169,17 @@ timestamp,client_ip,method,url,path,attack_type,body_len,body_entropy,special_ch
 2026-01-24T13:40:43.884174Z,127.0.0.1:33710,POST,http://192.168.122.170/dvwa/vulnerabilities/exec/,/dvwa/vulnerabilities/exec/,COMMAND_INJECTION,22,3.573
 2026-01-24T13:40:47.724251Z,127.0.0.1:33710,POST,http://192.168.122.170/dvwa/vulnerabilities/exec/,/dvwa/vulnerabilities/exec/,COMMAND_INJECTION,22,3.573
 2026-01-24T13:41:15.707816Z,127.0.0.1:33710,POST,http://192.168.122.170/dvwa/vulnerabilities/exec/,/dvwa/vulnerabilities/exec/,COMMAND_INJECTION,22,3.573
+2026-03-18T08:30:36.508856Z,127.0.0.1:57616,GET,http://127.0.0.1:8080/,/,NORMAL,0,0.0
+2026-03-18T08:30:36.546046Z,127.0.0.1:57616,GET,http://127.0.0.1:8080/login.php,/login.php,NORMAL,0,0.0
+2026-03-18T08:30:43.667613Z,127.0.0.1:53694,POST,http://127.0.0.1:8080/login.php,/login.php,COMMAND_INJECTION,80,4.871
+2026-03-18T08:30:45.500497Z,127.0.0.1:53694,GET,http://127.0.0.1:8080/login.php,/login.php,NORMAL,0,0.0
+2026-03-18T08:30:54.076573Z,127.0.0.1:49932,POST,http://127.0.0.1:8080/login.php,/login.php,NORMAL,88,4.745
+2026-03-18T08:30:54.099222Z,127.0.0.1:49932,GET,http://127.0.0.1:8080/index.php,/index.php,NORMAL,0,0.0
+2026-03-18T08:31:26.095294Z,127.0.0.1:58232,GET,http://127.0.0.1:8080/security.php,/security.php,NORMAL,0,0.0
+2026-03-18T08:31:26.202454Z,127.0.0.1:58232,GET,http://127.0.0.1:8080/dvwa/images/lock.png,/dvwa/images/lock.png,NORMAL,0,0.0
+2026-03-18T08:31:29.734195Z,127.0.0.1:58232,POST,http://127.0.0.1:8080/security.php,/security.php,NORMAL,77,4.779
+2026-03-18T08:31:29.756616Z,127.0.0.1:58232,GET,http://127.0.0.1:8080/security.php,/security.php,NORMAL,0,0.0
+2026-03-18T08:31:35.192704Z,127.0.0.1:45552,GET,http://127.0.0.1:8080/,/,NORMAL,0,0.0
+2026-03-18T08:34:13.129852Z,127.0.0.1:37136,GET,http://127.0.0.1:8080/,/,NORMAL,0,0.0
+2026-03-18T08:34:22.203281Z,127.0.0.1:43410,GET,http://127.0.0.1:8080/vulnerabilities/sqli/,/vulnerabilities/sqli/,NORMAL,0,0.0
+2026-03-18T08:34:33.848460Z,127.0.0.1:48494,GET,http://127.0.0.1:8080/vulnerabilities/sqli/?id=%27+OR+1%3D1+--&Submit=Submit,/vulnerabilities/sqli/?id=%27+OR+1%3D1+--&Submit=Submit,SQL_INJECTION,0,0.0

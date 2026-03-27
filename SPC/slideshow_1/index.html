@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Photo Album</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Photo Album by RUTIK</h2>
+
+<div id="upload-section">
+  <input type="file" id="upload" multiple accept="image/*">
+  <button id="deleteSelected">Delete Selected</button>
+  <button id="slideshowSelected">Slideshow</button>
+
+  <label>
+    Slide Time (sec):
+    <input type="number" id="slideTime" value="5" min="1">
+  </label>
+
+  <input type="file" id="loadJson" accept=".json">
+</div>
+
+<div id="gallery"></div>
+
+<div id="preview">
+  <img id="previewImg">
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
