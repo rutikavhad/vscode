@@ -38,9 +38,8 @@
 html, body { height: 100%; background: var(--bg); color: var(--text); font-family: var(--font-ui); overflow: hidden; }
 
 /* ── Layout ──────────────────────────────────────────────────────────── */
-#app {
-  display: grid;
-  grid-template-columns: 320px 1fr;
+#app {display: grid;
+  grid-template-columns: 1fr;  /* full map */
   grid-template-rows: 64px 1fr;
   height: 100vh;
   gap: 0;
@@ -404,6 +403,50 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
   pointer-events: none;
 }
 #toast.show { opacity: 1; transform: translateY(0); }
+/* Sidebar overlay (not grid anymore) */
+#sidebar {
+  position: absolute;
+  top: 64px;           /* below topbar */
+  left: 0;
+  width: 320px;
+  height: calc(100% - 64px);
+  background: var(--panel);
+  border-right: 1px solid var(--panel-border);
+  z-index: 1000;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+}
+
+/* Hidden state */
+#sidebar.closed {
+  transform: translateX(-100%);
+}
+
+/* Toggle button */
+#toggleBtn {
+  position: absolute;
+  top: 80px;
+  left: 10px;
+  z-index: 1100;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--panel-border);
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+#map {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 64px);
+}
+#toggleBtn {
+  top: 70px;
+}
+
 </style>
 </head>
 <body>
@@ -429,59 +472,68 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
     <div id="clock">--:--:--</div>
   </header>
 
-  <!-- ── Sidebar ── -->
-  <aside id="sidebar">
+<!-- Toggle Button -->
+<button id="toggleBtn">☰</button>
 
-    <!-- Line toggles -->
-    <div class="sidebar-section">
-      <div class="section-label">Metro Lines</div>
-      <div id="line-toggles">
-        <!-- populated by JS -->
-      </div>
+<!-- Sidebar -->
+<div id="sidebar">
+  
+  <!-- Line toggles -->
+  <div class="sidebar-section">
+    <div class="section-label">Metro Lines</div>
+    <div id="line-toggles"></div>
+  </div>
+
+  <!-- Speed control -->
+  <div class="sidebar-section">
+    <div class="section-label">Simulation Speed</div>
+    <div class="speed-row">
+      <label>Speed</label>
+      <input type="range" id="speed-slider" min="1" max="60" step="1" value="1">
+      <div id="speed-val">1×</div>
     </div>
+  </div>
 
-    <!-- Speed control -->
-    <div class="sidebar-section">
-      <div class="section-label">Simulation Speed</div>
-      <div class="speed-row">
-        <label>Speed</label>
-        <input type="range" id="speed-slider" min="1" max="60" step="1" value="1">
-        <div id="speed-val">1×</div>
-      </div>
+  <!-- Train list -->
+  <div style="padding: 14px 18px 6px; border-bottom: 1px solid var(--panel-border);">
+    <div class="section-label">Active Trains</div>
+  </div>
+  <div id="train-list"></div>
+
+  <!-- Stats -->
+  <div id="stats-bar">
+    <div class="stat">
+      <div class="stat-val" id="stat-trains">0</div>
+      <div class="stat-lbl">Trains</div>
     </div>
-
-    <!-- Train list -->
-    <div style="padding: 14px 18px 6px; border-bottom: 1px solid var(--panel-border);">
-      <div class="section-label">Active Trains</div>
+    <div class="stat">
+      <div class="stat-val" id="stat-lines">0</div>
+      <div class="stat-lbl">Lines</div>
     </div>
-    <div id="train-list"></div>
-
-    <!-- Stats -->
-    <div id="stats-bar">
-      <div class="stat">
-        <div class="stat-val" id="stat-trains">0</div>
-        <div class="stat-lbl">Trains</div>
-      </div>
-      <div class="stat">
-        <div class="stat-val" id="stat-lines">0</div>
-        <div class="stat-lbl">Lines</div>
-      </div>
-      <div class="stat">
-        <div class="stat-val" id="stat-update">—</div>
-        <div class="stat-lbl">Last Update</div>
-      </div>
+    <div class="stat">
+      <div class="stat-val" id="stat-update">—</div>
+      <div class="stat-lbl">Last Update</div>
     </div>
+  </div>
 
-  </aside>
-
-  <!-- ── Map ── -->
-  <div id="map"></div>
 </div>
-
-<!-- Toast -->
-<div id="toast"></div>
-
+<div id="map"></div>
 <script>
+
+const btn = document.getElementById("toggleBtn");
+const sidebar = document.getElementById("sidebar");
+
+btn.addEventListener("click", () => {
+    sidebar.classList.toggle("closed");
+
+    // change icon
+    btn.innerText = sidebar.classList.contains("closed") ? "☰" : "✖";
+
+    // fix map resize
+    setTimeout(() => {
+        state.map.invalidateSize();
+    }, 300);
+});
 // ── State ────────────────────────────────────────────────────────────────────
 const state = {
   lines:       {},      // id → line meta
@@ -499,12 +551,13 @@ const LINE_COLORS = { 1: '#eb23bf', 2: '#457B9D', 3: '#52b788' };
 
 // ── Map init ─────────────────────────────────────────────────────────────────
 function initMap() {
-  state.map = L.map('map', {
-    center:  [28.63, 77.17],
-    zoom:    12,
-    zoomControl: true,
-    attributionControl: true,
-  });
+ state.map = L.map('map', {
+  center:  [28.63, 77.17],
+  zoom:    12,
+  zoomControl: false,
+  attributionControl: true,
+});
+L.control.zoom({ position: 'topright' }).addTo(state.map);
 
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; OpenStreetMap &copy; CARTO',
@@ -602,17 +655,25 @@ async function loadStations(line) {
   state.linePolylines[line.id] = poly;
 
   // Station markers
-  state.stationMarkers[line.id] = stations.map(s => {
-    const m = L.marker([s.latitude, s.longitude], { icon: stationIcon(line.color), zIndexOffset: -100 })
-      .addTo(state.map)
-      .bindTooltip(s.name, {
-        permanent: false,
-        direction: 'top',
-        className: '',
-        offset: [0, -10],
-      });
-    return m;
+state.stationMarkers[line.id] = stations.map(s => {
+  const m = L.marker([s.latitude, s.longitude], {
+    icon: stationIcon(line.color),
+    zIndexOffset: -100
+  })
+  .addTo(state.map)
+  .bindTooltip(s.name, {
+    permanent: false,
+    direction: 'top',
+    offset: [0, -10],
   });
+
+  // ✅ ADD THIS (critical)
+  m.on('click', () => {
+    showStationPopup(s, line.id);
+  });
+
+  return m;
+});
 }
 
 // ── Toggle line visibility ────────────────────────────────────────────────────
@@ -769,7 +830,73 @@ function buildPopup(t) {
     <div class="popup-row"><span>ETA next</span><span>${t.eta_minutes} min</span></div>
   `;
 }
+function getNextTrainsForStation(stationName, lineId, trains) {
+  const list = [];
 
+  const station = stationName.toLowerCase().trim();
+
+  trains.forEach(t => {
+    if (t.line_id !== lineId) return;
+
+    const next = (t.next_station || "").toLowerCase().trim();
+    const from = (t.from_station || "").toLowerCase().trim();
+
+    // train coming to station
+    if (next.includes(station)) {
+      list.push({
+        eta: t.eta_minutes,
+        line: t.line_name
+      });
+    }
+
+    // train currently at station
+    else if (from.includes(station) && t.status === "STOPPED") {
+      list.push({
+        eta: 0,
+        line: t.line_name
+      });
+    }
+  });
+
+  list.sort((a, b) => a.eta - b.eta);
+  return list.slice(0, 3);
+}
+
+
+function showStationPopup(station, lineId) {
+
+  fetch(`/api/live_trains?speed_multiplier=${state.speedMultiplier}`)
+    .then(res => res.json())
+    .then(trains => {
+
+      const next = getNextTrainsForStation(
+        station.name,
+        lineId,
+        trains
+      );
+
+      let html = `<div class="popup-header">${station.name}</div>`;
+
+      if (next.length === 0) {
+        html += `<div class="popup-row">No upcoming trains</div>`;
+      } else {
+        next.forEach((t, i) => {
+          html += `
+            <div class="popup-row">
+              <span>${i + 1}. ${t.line}</span>
+              <span>${t.eta === 0 ? "Arriving" : t.eta + " min"}</span>
+            </div>
+          `;
+        });
+      }
+
+      L.popup()
+        .setLatLng([station.latitude, station.longitude])
+        .setContent(html)
+        .openOn(state.map);
+    })
+    .catch(err => console.error("Popup error:", err));
+}
 // ── Speed slider ──────────────────────────────────────────────────────────────
 function initSpeedControl() {
   const slider = document.getElementById('speed-slider');

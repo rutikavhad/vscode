@@ -1,0 +1,145 @@
+
+main tables
+routes              → metro lines
+stations            → lat/lng + names
+route_stations      → station order
+station_intervals   → travel time between stations
+line_config         → frequency, dwell, timing
+
+backend Flask and Python
+Main components:
+🔹 Flask API
+/api/lines
+/api/stations
+/api/live_trains
+
+
+Simulation Engine (simulation.py)
+
+This is the most important part.
+
+It does:
+
+- calculates train positions
+- handles frequency
+- handles turnaround
+- handles dwell time
+- handles direction (UP/DOWN)
+- handles operating hours
+
+👉 This is called a time-based simulation engine
+
+Data Access Layer
+data_access.py
+
+👉 abstracts DB queries
+👉 keeps logic clean
+
+
+
+3. Frontend (Map UI)
+
+This is where your map structure comes from
+
+🗺️ Map Library → Leaflet.js
+
+👉 This is the main tool you used to build the map
+
+Key features:
+
+L.map()         → creates map
+L.tileLayer()   → loads map tiles
+L.marker()      → stations + trains
+L.polyline()    → metro lines
+
+
+
+
+Map Tiles → OpenStreetMap
+
+Your map background comes from:
+
+OpenStreetMap (OSM)
+
+👉 Free global map data
+👉 Used via tile URL:
+
+https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
+
+
+
+
+Train Movement Logic
+
+Your trains are NOT real GPS—they are computed positions
+
+🔹 How movement works
+station A → station B → station C
+
+You calculate:
+
+progress = elapsed_time / travel_time
+
+Then:
+
+lat = lat1 + (lat2 - lat1) * progress
+lng = lng1 + (lng2 - lng1) * progress
+
+👉 This is called linear interpolation
+
+Timeline system
+
+You built:
+
+MOVE → STOP → MOVE → STOP
+
+Using:
+
+travel time
+dwell time
+turnaround
+
+Real-Time Updates
+
+Frontend calls:
+
+/api/live_trains
+
+every few seconds
+
+👉 This creates:
+
+"fake real-time simulation"
+
+
+UI Layer
+
+You built:
+
+Sidebar (controls)
+Toggle panel
+Line colors
+Train markers
+Station popups
+
+Important Concepts You Used
+
+You actually used real engineering concepts:
+
+✔ GIS (Geographic Information Systems)
+lat/lng coordinates
+map rendering
+✔ Discrete Time Simulation
+train cycles
+frequency-based dispatch
+✔ Graph Model
+stations = nodes
+intervals = edges
+✔ Interpolation
+smooth movement between stations
+✔ Event-based logic
+STOP at station
+TURNAROUND
+SERVICE HOURS
+
+

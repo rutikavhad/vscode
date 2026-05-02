@@ -7,6 +7,11 @@ from services.db import get_connection
 # LINES
 # ─────────────────────────────────────────────────────────────
 
+
+LINE_COLORS = {
+    1: "#00BFFF",   # Aqua Line (blue)
+    2: "#FF00BF",   # Purple Line (magenta)
+}
 def fetch_all_lines():
     conn = get_connection()
     cur = conn.cursor()
@@ -24,7 +29,7 @@ def fetch_all_lines():
         {
             "id": r[0],
             "name": r[1],
-            "color": "#FF5733"  # temporary color
+            "color":LINE_COLORS.get(r[0],"#999999")   # temporary color
         }
         for r in rows
     ]
@@ -49,7 +54,7 @@ def fetch_line_by_id(line_id):
     return {
         "id": row[0],
         "name": row[1],
-        "color": "#FF5733"
+        "color": LINE_COLORS.get(row[0], "#999999")
     }
 
 
@@ -128,7 +133,12 @@ def fetch_line_config(line_id):
     cur = conn.cursor()
 
     cur.execute("""
-        SELECT frequency_minutes, turnaround_minutes, dwell_time_min
+        SELECT 
+            frequency_minutes,
+            turnaround_minutes,
+            dwell_time_min,
+            start_time,
+            end_time
         FROM line_config
         WHERE route_id = %s
         LIMIT 1
@@ -141,11 +151,15 @@ def fetch_line_config(line_id):
         return {
             "frequency_minutes": row[0],
             "turnaround_minutes": row[1],
-            "dwell_time_min": row[2]   # ⭐ NEW
+            "dwell_time_min": row[2],
+            "start_time": str(row[3]),   # ✅ important
+            "end_time": str(row[4])
         }
 
     return {
         "frequency_minutes": 6,
         "turnaround_minutes": 8,
-        "dwell_time_min": 2
+        "dwell_time_min": 2,
+        "start_time": "06:00:00",
+        "end_time": "23:00:00"
     }

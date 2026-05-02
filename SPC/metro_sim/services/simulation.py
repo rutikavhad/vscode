@@ -2,7 +2,7 @@ from __future__ import annotations
 import time
 import math
 from typing import List, Dict, Any, Optional
-
+from datetime import datetime
 
 # ─────────────────────────────────────────────────────────────
 # Helpers
@@ -24,6 +24,14 @@ def _interpolate(lat1, lng1, lat2, lng2, progress):
 # ─────────────────────────────────────────────────────────────
 
 class SimulationEngine:
+    # def _is_operational(config):
+    #     now = datetime.now().time()
+
+    #     start = datetime.strptime(config["start_time"], "%H:%M:%S").time()
+    #     end   = datetime.strptime(config["end_time"], "%H:%M:%S").time()
+
+    #     return start <= now <= end
+    # 🚨 NEW CHECK
 
     def compute_positions(
         self,
@@ -34,10 +42,33 @@ class SimulationEngine:
         speed_multiplier: float = 1.0,
         time_offset: float = 0.0,
     ) -> List[Dict[str, Any]]:
+        from datetime import datetime
+
+        def _is_operational(config):
+
+            now = datetime.strptime("07:00:00", "%H:%M:%S").time()
+            #now = datetime.now().time()
+
+            start = config["start_time"]
+            end   = config["end_time"]
+
+            if isinstance(start, str):
+                start = datetime.strptime(start, "%H:%M:%S").time()
+            if isinstance(end, str):
+                end = datetime.strptime(end, "%H:%M:%S").time()
+
+            #print("NOW:", now, "START:", start, "END:", end)  # debug
+
+            return start <= now <= end
+        
+
+        # 🚨 NEW CHECK
+        if not _is_operational(config):
+            return []   # no trains
 
         freq       = config['frequency_minutes']
         turnaround = config['turnaround_minutes']
-        dwell      = config.get('dwell_time_min', 2)   # ⭐ NEW
+        dwell      = config.get('dwell_time_min', 2) 
 
         # Build timeline WITH stops
         timeline = self._build_timeline(stations, intervals, dwell)
@@ -47,6 +78,7 @@ class SimulationEngine:
 
         now = _now_minutes(speed_multiplier, time_offset)
         n_trains = max(1, math.ceil(cycle_time / freq))
+        
 
         results = []
 
