@@ -160,11 +160,5 @@ def not_found(e):
 # ─────────────────────────────────────────────────────────────────────────────
 
 if __name__ == '__main__':
-    # Seed if database doesn't exist yet
-    db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'metro.db')
-    if not os.path.exists(db_path):
-        print("Database not found – seeding now…")
-        import seed
-        seed.seed()
-
+    print("Running with PostgreSQL (Pune Metro data)")
     app.run(debug=True, host='0.0.0.0', port=5000)

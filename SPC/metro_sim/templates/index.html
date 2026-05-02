@@ -24,8 +24,8 @@
   --text:        #e8eaf0;
   --muted:       #6b748a;
   --accent:      #f0c060;
-  --red:         #E63946;
-  --blue:        #457B9D;
+  --red:         #17f8ed;
+  --blue:        #e929d9;
   --green:       #52b788;
   --glow-red:    rgba(230,57,70,.25);
   --glow-blue:   rgba(69,123,157,.25);
@@ -411,7 +411,7 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
 <!-- Loading -->
 <div id="loading">
   <div class="loader-ring"></div>
-  <div class="loader-text">INITIALISING METRO SIM…</div>
+  <div class="loader-text">INITIALISING METRO</div>
 </div>
 
 <div id="app">
@@ -495,7 +495,7 @@ const state = {
   stationMarkers: {},   // line_id → [markers]
 };
 
-const LINE_COLORS = { 1: '#E63946', 2: '#457B9D', 3: '#52b788' };
+const LINE_COLORS = { 1: '#eb23bf', 2: '#457B9D', 3: '#52b788' };
 
 // ── Map init ─────────────────────────────────────────────────────────────────
 function initMap() {
