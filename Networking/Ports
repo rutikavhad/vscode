@@ -1,0 +1,24 @@
+| Port | Service     | Explanation                    |
+| ---- | ----------- | ------------------------------ |
+| 20   | FTP Data    | File Transfer (data channel)   |
+| 21   | FTP Control | File transfer commands         |
+| 22   | SSH         | Secure remote login            |
+| 23   | Telnet      | Unencrypted remote login (old) |
+| 25   | SMTP        | Sending email                  |
+| 53   | DNS         | Domain name resolution         |
+| 67   | DHCP Server | Assigns IP addresses           |
+| 68   | DHCP Client | Receives IP addresses          |
+| 80   | HTTP        | Web traffic (unencrypted)      |
+| 110  | POP3        | Email retrieval                |
+| 123  | NTP         | Time synchronization           |
+| 143  | IMAP        | Email access                   |
+| 443  | HTTPS       | Secure web traffic             |
+
+| Port  | Service              |
+| ----- | -------------------- |
+| 1433  | Microsoft SQL Server |
+| 1521  | Oracle Database      |
+| 3306  | MySQL                |
+| 3389  | Remote Desktop (RDP) |
+| 5432  | PostgreSQL           |
+| 27017 | MongoDB              |

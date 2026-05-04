@@ -1,0 +1,75 @@
+
+# Data Flow Analysis
+
+This project implements a Data Flow Analysis (DFA) framework in Python for analyzing simple programs. It reads a source file input.c constructs a control flow model, and computes multiple classical compiler data-flow analyses.
+
+The implementation focuses on:
+
+* Reaching Definitions
+* Live Variables
+* Available Expressions
+* Very Busy Expressions
+
+Features
+* Reads and parses input program statements
+* Builds a Control Flow Graph (CFG)
+* Computes:
+* GEN and KILL sets
+* Entry and Exit sets for multiple analyses
+* Outputs results in a structured and readable format
+
+
+# Project Structure
+The main logic is implemented in the DataFlow class :
+
+Key Components
+## Input Handling
+* Reads file line-by-line
+* Filters comments and empty lines
+## CFG Construction
+* Sequential flow graph
+* Tracks parent relationships
+## Analysis Modules
+* Reaching Definitions
+* Live Variables
+* Available Expressions
+* Very Busy Expressions
+## GEN/KILL Computation
+* Tracks definitions and expressions
+* Identifies killed variables and expressions
+
+
+## Data Flow Analyses Implemented
+1. Reaching Definitions
+Determines which definitions may reach a program point.
+
+2. Live Variables
+Identifies variables that may be used in the future.
+
+3. Available Expressions
+Finds expressions already computed and reusable.
+
+4. Very Busy Expressions
+Expressions guaranteed to be used later before modification.
+
+
+## How to RUN
+1:input file> input.c
+```bash
+a = b + c;
+d = a + e;
+b = d + f;
+```
+2:Run Script
+```bash
+python DFA.py
+```
+
+## Step 3: Output
+## The program prints:
+* GEN and KILL sets
+* Entry and Exit sets for:
+* Reaching Definitions
+* Live Variables
+* Available Expressions
+* Very Busy Expressions

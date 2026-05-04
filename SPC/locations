@@ -1,0 +1,70 @@
+ station_id |        station_name        |    lat    |    lng    
+------------+----------------------------+-----------+-----------
+          1 | Vanaz                      | 18.507943 | 73.789402
+          2 | Anand Nagar                | 18.509875 | 73.795782
+          3 | Ideal Colony               |  18.51221 | 73.801235
+          4 | Nal Stop                   | 18.515615 |  73.80795
+          5 | Garware College            |  18.51904 |  73.81298
+          6 | Deccan Gymkhana            |  18.52345 |  73.81862
+          7 | Chhatrapati Sambhaji Udyan |   18.5269 |  73.82198
+          8 | PMC                        |   18.5312 |   73.8249
+         10 | Mangalwar Peth             |   18.5387 |   73.8317
+         11 | Pune Railway Station       |   18.5418 |   73.8352
+         12 | Ruby Hall Clinic           |   18.5446 |   73.8389
+         13 | Bund Garden                |    18.548 |   73.8426
+         14 | Yerawada                   |   18.5515 |   73.8462
+         15 | Kalyani Nagar              |   18.5549 |     73.85
+         16 | Ramwadi                    |   18.5583 |   73.8538
+         28 | PCMC                       |   18.6292 |   73.7997
+         29 | Sant Tukaram Nagar         |   18.6229 |   73.8046
+         30 | Bhosari                    |   18.6167 |   73.8089
+         31 | Kasarwadi                  |   18.6109 |   73.8122
+         32 | Phugewadi                  |   18.6043 |   73.8148
+         33 | Dapodi                     |   18.5975 |   73.8178
+         34 | Bopodi                     |   18.5903 |   73.8202
+         35 | Khadki                     |   18.5832 |   73.8229
+         36 | Range Hills                |   18.5762 |   73.8255
+         37 | Shivajinagar               |    18.569 |   73.8281
+          9 | Civil Court                |   18.5351 |   73.8283
+         39 | Budhwar Peth               |   18.5538 |   73.8348
+         40 | Mandai                     |   18.5478 |   73.8376
+         41 | Swargate                   |   18.5413 |   73.8405
+
+
+
+
+UPDATE stations SET lat=18.507101, lng=73.805268 WHERE station_name='Vanaz';
+UPDATE stations SET lat=18.509576, lng=73.814077 WHERE station_name='Anand Nagar';
+UPDATE stations SET lat=18.509016, lng=73.822059 WHERE station_name='Ideal Colony';
+UPDATE stations SET lat=18.507339, lng=73.828703 WHERE station_name='Nal Stop';
+UPDATE stations SET lat=18.512015, lng=73.838061 WHERE station_name='Garware College';
+UPDATE stations SET lat=18.516309, lng=73.844385 WHERE station_name='Deccan Gymkhana';
+UPDATE stations SET lat=18.520157, lng=73.847545 WHERE station_name='Chhatrapati Sambhaji Udyan';
+UPDATE stations SET lat=18.522770, lng=73.853505 WHERE station_name='PMC';
+UPDATE stations SET lat=18.526817, lng=73.857868 WHERE station_name='Civil Court';
+UPDATE stations SET lat=18.530070, lng=73.864819 WHERE station_name='Mangalwar Peth';
+UPDATE stations SET lat=18.529652, lng=73.872627 WHERE station_name='Pune Railway Station';
+UPDATE stations SET lat=18.532708, lng=73.877859 WHERE station_name='Ruby Hall Clinic';
+UPDATE stations SET lat=18.540778, lng=73.883570 WHERE station_name='Bund Garden';
+UPDATE stations SET lat=18.545340, lng=73.886678 WHERE station_name='Yerawada';
+UPDATE stations SET lat=18.544315, lng=73.905647 WHERE station_name='Kalyani Nagar';
+UPDATE stations SET lat=18.557484, lng=73.909043 WHERE station_name='Ramwadi';
+
+
+
+
+
+UPDATE stations SET lat=18.629364, lng=73.803338 WHERE station_name='PCMC';
+UPDATE stations SET lat=18.608923, lng=73.820203 WHERE station_name='Sant Tukaram Nagar';
+UPDATE stations SET lat=18.609396, lng=73.820136 WHERE station_name='Bhosari';
+UPDATE stations SET lat=18.599667, lng=73.827226 WHERE station_name='Kasarwadi';
+UPDATE stations SET lat=18.591131, lng=73.831216 WHERE station_name='Phugewadi';
+UPDATE stations SET lat=18.583751, lng=73.833831 WHERE station_name='Dapodi';
+UPDATE stations SET lat=18.570061, lng=73.838036 WHERE station_name='Bopodi';
+UPDATE stations SET lat=18.562358, lng=73.842098 WHERE station_name='Khadki';
+UPDATE stations SET lat=18.549971, lng=73.845935 WHERE station_name='Range Hills';
+UPDATE stations SET lat=18.532477, lng=73.849212 WHERE station_name='Shivajinagar';
+UPDATE stations SET lat=18.526817, lng=73.857868 WHERE station_name='Civil Court';
+UPDATE stations SET lat=18.521515, lng=73.859691 WHERE station_name='Budhwar Peth';
+UPDATE stations SET lat=18.512609, lng=73.857428 WHERE station_name='Mandai';
+UPDATE stations SET lat=18.500903, lng=73.857065 WHERE station_name='Swargate';

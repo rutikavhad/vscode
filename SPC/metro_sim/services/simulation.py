@@ -46,8 +46,8 @@ class SimulationEngine:
 
         def _is_operational(config):
 
-            now = datetime.strptime("07:00:00", "%H:%M:%S").time()
-            #now = datetime.now().time()
+            #now = datetime.strptime("07:00:00", "%H:%M:%S").time()
+            now = datetime.now().time()
 
             start = config["start_time"]
             end   = config["end_time"]

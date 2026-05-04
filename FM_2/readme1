@@ -1,0 +1,58 @@
+PROJECT TITLE: GCC Code Analyzer (Function & Variable Extractor)
+
+DESCRIPTION:
+This project is developed using Python. The main purpose of this program is to analyze a C source file and extract useful information from it.
+## re - Regular Expressions Used for Pattern matching, Searching text, Extracting specific parts from strings.
+## No Other package used in this code
+
+It provides details such as:
+
+* Function names along with their return types
+* Function parameters
+* Global variables with their datatypes
+* Local variables with their datatypes
+* Function calls (caller → callee relationship)
+* Inline functions present in the code
+
+FEATURES:
+
+1. Removes comments from the given C code
+2. Detects all functions in the program
+3. Identifies both global and local variables
+4. Shows the relationship between function calls
+5. Detects inline functions (including static inline)
+6. Supports common datatypes like int, float, double, char, long, short, unsigned, and bool
+
+HOW TO RUN:
+
+Step 1: Make sure Python is installed on your system
+
+Step 2: Place your C file (for example: input.c) in the same folder as the program
+
+Step 3: Run the program using the following command:
+python c_code_anlyzer.py
+
+Step 4: After running, the output will be displayed in the terminal
+
+OUTPUT:
+The program displays:
+
+* Global variables
+* Total number of global variables
+* Function details, including:
+  • Function name
+  • Return type
+  • Parameters
+  • Local variables
+  • Number of local variables
+  • Function calls
+* Inline functions present in the code
+
+FILES INCLUDED:
+
+* c_code_anlyzer.py  → Main Python program
+* input.c            → Sample C file
+* README.txt         → Project documentation
+
+AUTHOR:
+Rutik

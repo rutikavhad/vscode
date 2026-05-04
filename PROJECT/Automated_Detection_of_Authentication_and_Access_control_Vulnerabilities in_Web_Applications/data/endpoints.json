@@ -1,0 +1,942 @@
+{
+  "target": "http://localhost:3000/",
+  "pages_crawled": 100,
+  "total_endpoints": 153,
+  "endpoints": [
+    {
+      "url": "http://localhost:3000/2fa/assets/public/favicon_js.ico",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/2fa/enter",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/2fa/main.js",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/2fa/polyfills.js",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/2fa/runtime.js",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/2fa/styles.css",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/2fa/vendor.js",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/application-configuration",
+      "risk": "HIGH",
+      "tags": [
+        "admin"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/forgot-password",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/login",
+      "risk": "HIGH",
+      "tags": [
+        "authentication"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/admin",
+      "risk": "HIGH",
+      "tags": [
+        "admin",
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/saveLoginIp",
+      "risk": "HIGH",
+      "tags": [
+        "authentication",
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/user/authentication-details/",
+      "risk": "HIGH",
+      "tags": [
+        "authentication",
+        "authorization",
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/user/change-password?current=",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow",
+        "authorization",
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/user/login",
+      "risk": "HIGH",
+      "tags": [
+        "authentication",
+        "authorization",
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/user/reset-password",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow",
+        "authorization",
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/walletNFTVerify",
+      "risk": "HIGH",
+      "tags": [
+        "credential-flow"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/accounting",
+      "risk": "MEDIUM",
+      "tags": [
+        "authorization"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/Addresss",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/BasketItems",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/Cards",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/Challenges",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/Challenges/?key=nftMintChallenge",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/Complaints",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/Deliverys",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/Feedbacks",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/Hints",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/Products",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/Quantitys",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/Recycles",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/SecurityAnswers",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/SecurityQuestions",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/Users",
+      "risk": "MEDIUM",
+      "tags": [
+        "authorization",
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/\\\"/",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/\\\"/ftp/legal.md\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/\\\"http:/htmledit.squarefree.com\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/\\\"https:/blockchain.info/address/1AbKfgvw9psQ41NbLi8kufDQTezwG8DRZm\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/\\\"https:/cataas.com/cat\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/\\\"https:/en.wikipedia.org/wiki/Easter_egg_(media)\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/\\\"https:/github.blog/2020-07-16-github-archive-program-the-journey-of-the-worlds-open-source-code-to-the-arctic\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/\\\"https:/github.com/Neo23x0/sigma\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/\\\"https:/github.com/OWASP/owasp-swag/blob/master/projects/juice-shop/lego/OWASP%20JuiceShop%20Pi-server%201.2.pdf\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/\\\"https:/github.com/juice-shop/juice-shop/releases/tag/v9.3.1-PERMAFROST\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/\\\"https:/github.com/juice-shop/multi-juicer/blob/main/guides/raspberry-pi/raspberry-pi.md\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/\\\"https:/github.com/prometheus/prometheus\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/\\\"https:/hakipedia.com/index.php/Poison_Null_Byte\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/\\\"https:/leanpub.com/juice-shop\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/\\\"https:/pwning.owasp-juice.shop\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/\\\"https:/steamcommunity.com/sharedfiles/filedetails/?id=1969196030\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/\\\"https:/steamcommunity.com/sharedfiles/filedetails/?id=1970691216\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/\\\"https:/twitter.com/owasp_juiceshop\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/\\\"https:/www.owasp.org/index.php/O-Saft\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/\\\"https:/www.stickeryou.com/products/owasp-juice-shop/794\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/api/\\\"javascript:alert(`xss)\\\"",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/data-export",
+      "risk": "MEDIUM",
+      "tags": [
+        "data-transfer"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/file-upload",
+      "risk": "MEDIUM",
+      "tags": [
+        "data-transfer"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/profile",
+      "risk": "MEDIUM",
+      "tags": [
+        "authorization"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/captcha",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/chatbot",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/continue-code",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/continue-code-findIt",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/continue-code-findIt/apply/",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/continue-code-fixIt",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/continue-code-fixIt/apply/",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/continue-code/apply/",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/country-mapping",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/deluxe-membership",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/image-captcha/",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/memories",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/order-history",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/products",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/repeat-notification",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/track-order",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/user",
+      "risk": "MEDIUM",
+      "tags": [
+        "authorization",
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/user/security-question?email=",
+      "risk": "MEDIUM",
+      "tags": [
+        "authorization",
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/user/whoami",
+      "risk": "MEDIUM",
+      "tags": [
+        "authorization",
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/wallet/balance",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/rest/web3",
+      "risk": "MEDIUM",
+      "tags": [
+        "api"
+      ]
+    },
+    {
+      "url": "http://localhost:3000/",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/10",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/16",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/160",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/2",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/20",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/40",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/5",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/6",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/8",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/about",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/address/assets/public/favicon_js.ico",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/address/create",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/address/edit/",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/address/edit/assets/public/favicon_js.ico",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/address/edit/main.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/address/edit/polyfills.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/address/edit/runtime.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/address/edit/styles.css",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/address/edit/vendor.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/address/main.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/address/polyfills.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/address/runtime.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/address/saved",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/address/select",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/address/styles.css",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/address/vendor.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/application-version",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/assets/i18n/",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/assets/public/favicon_js.ico",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/basket",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/chatbot",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/complain",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/contact",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/dataerasure",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/delivery-method",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/deluxe-membership",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/engine.io",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/erasure-request",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/main.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/nftMintListen",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/nftUnlocked",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/order-completion",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/order-history",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/order-summary",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/orders",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/payment",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/photo-wall",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/polyfills.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/recycle",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/register",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/respond",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/reviews",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/runtime.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/saved-payment-methods",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/score-board",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/search",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/snippets",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/snippets/fixes",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/snippets/verdict",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/socket.io",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/status",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/styles.css",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/submitKey",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/track-result",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/track-result/assets/public/favicon_js.ico",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/track-result/main.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/track-result/new",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/track-result/polyfills.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/track-result/runtime.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/track-result/styles.css",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/track-result/vendor.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/vendor.js",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/wallet",
+      "risk": "LOW",
+      "tags": []
+    },
+    {
+      "url": "http://localhost:3000/walletExploitAddress",
+      "risk": "LOW",
+      "tags": []
+    }
+  ]
+}

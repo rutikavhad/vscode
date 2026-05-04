@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Simple Page</title>
+</head>
+<body>
+
+    <h1>Welcome!</h1>
+    <p>This is my first simple HTML page.</p>
+
+
+    <ul>
+    {% for station in stations %}
+        <li>{{ station.station_name }}</li>
+    {% endfor %}
+</ul>
+
+
+
+</body>
+</html>
